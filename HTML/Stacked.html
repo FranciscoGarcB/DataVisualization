@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>FTA Team</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../Images/favicon-16x16.png">
+  <link rel="manifest" href="../Images/site.webmanifest">
+  <link rel="mask-icon" href="../Images/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../Images/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="../Images/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <meta charset="UTF-8">
+  <link rel="stylesheet", href="../CSS/style.css">
+  <script src="https://d3js.org/d3.v4.js"></script>
+</head>
+
+
+<body>
+  <h1> DATA VISUALIZATION: 5M TREES DATASET ANALYSIS </h1>
+  <h2> FTA: Francisco, Tom & Arshia</h2> <hr>
+  <!-- Navigation bar -->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="../index.html">1st Assignment</a>
+    <a href="HTML/">2nd Assignment</a>
+    <a href="HTML/">3rd Assignment</a>
+    <a href="HTML/">4th Assignment</a>
+  </div>
+
+  <script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  </script>
+  <!--  -->
+
+  <section> 
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <h3> Section 1: Comparing categories</h3>
+    <div class="topnav">
+      <a href="../index.html" >Bar Chart</a>
+      <a class="active" href="Stacked.html">Stacked Bar Chart</a>
+      <a href="SmallM.html">Small Multiples</a>
+      <a href="Heatmap.html">Heatmap</a>
+    </div>
+    <br>
+
+    <h4>Cities vs tree type</h4>
+    <input type="radio" name="chartType" id="stackedChart" checked> Stacked Chart
+    <input type="radio" name="chartType" id="stackedPercentChart"> Stacked Percent Chart
+    <br>
+
+    <div id="stacked"></div>
+
+    <script>
+      // Change between scripts
+      const stackedChart = document.getElementById("stackedChart");
+      const stackedPercentChart = document.getElementById("stackedPercentChart");
+      const stackedDiv = document.getElementById("stacked");
+
+      stackedChart.addEventListener("change", function () {
+        if (stackedChart.checked) {
+          // Delete content
+          stackedDiv.innerHTML = "";
+          // First script 
+          const script = document.createElement("script");
+          script.src = "../JavaScript/stacked.js";
+          stackedDiv.appendChild(script);
+        }
+      });
+
+      stackedPercentChart.addEventListener("change", function () {
+        if (stackedPercentChart.checked) {
+          // Delete content
+          stackedDiv.innerHTML = "";
+          // Second script
+          const script = document.createElement("script");
+          script.src = "../JavaScript/stacked_percent.js";
+          stackedDiv.appendChild(script);
+        }
+      });
+
+      // First script on first load of the page
+      window.addEventListener("load", function () {
+        const initialScript = document.createElement("script");
+        initialScript.src = "../JavaScript/stacked.js";
+        stackedDiv.appendChild(initialScript);
+      });
+    </script>
+  </section>
+</body>
+
+</html>
