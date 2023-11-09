@@ -10,7 +10,7 @@ d3.csv("../datasets/stacked_other.csv").then(function(data) {
 
     function drawHorizontalBarChart(data, columnName, containerId) {
         var margin = { top: 40, right: 30, bottom: 40, left: 110 };
-        var width = 320 - margin.left - margin.right;
+        var width = 380 - margin.left - margin.right;
         var height = 200 - margin.top - margin.bottom;
 
         var svg = d3.select(containerId)

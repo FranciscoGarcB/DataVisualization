@@ -14,24 +14,9 @@
   <meta name="theme-color" content="#ffffff">
   <meta charset="UTF-8">
   <link rel="stylesheet", href="../CSS/style.css">
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-  <style>
-    .tooltip {
-      position: absolute;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      padding: 5px;
-      border-radius: 5px;
-      pointer-events: none;
-    }
-
-    .cell:hover {
-      stroke: #333;
-      stroke-width: 2;
-    }
-  </style>
+  <script src="https://d3js.org/d3.v4.js"></script>
 </head>
+
 
 <body>
   <h1> DATA VISUALIZATION: 5M TREES DATASET ANALYSIS </h1>
@@ -44,7 +29,6 @@
     <a href="HTML/">3rd Assignment</a>
     <a href="HTML/">4th Assignment</a>
   </div>
-
   <script>
   function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
@@ -54,27 +38,21 @@
     document.getElementById("mySidenav").style.width = "0";
   }
   </script>
-  <!--  -->
 
-  <section> 
+
+<section>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-    <h3> Section 1: Comparing categories</h3>
+    <h3> Section 2: Distributions and correlations</h3>
     <div class="topnav">
-      <a href="../index.html" >Bar Chart</a>
-      <a href="Stacked.html">Stacked Bar Chart</a>
-      <a href="SmallM.html">Small Multiples</a>
-      <a class="active" href="Heatmap.html">Heatmap</a>  
+      <a href="../assignment2_index.html">Alluvial</a>
+      <a  href="BoxPlot.html">Box plot</a>
+      <a class="active"href="ScatterPlot.html">Scatter Plot</a>
+      <a href="BubbleChart.html">Bubble Chart</a>
     </div>
     <br>
 
-    <label for="state-select">Select a state:</label>
-    <select id="state-select"></select>
-    <h4> Abundance of top 30 trees of the state per city</h4>
-    <div id="heatmap-container">
-      <svg id="heatmap" width="1300" height="600"></svg>
-      <div class="tooltip" style="opacity: 0;"></div>
-    </div>
-    <script src="../JavaScript/heatmap.js"></script>
+    <div id="my_dataviz"></div>
+
   </section>
 </body>
 

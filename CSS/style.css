@@ -95,3 +95,15 @@ section > span {
   .sidenav a {font-size: 18px;}
 }
 
+#selectContainer {
+  text-align: right;
+}
+
+#selectButton {
+  margin-top: 10px; /* Ajusta el margen según tus preferencias */
+}
+
+#my_dataviz, #stacked {
+  margin: 0 auto;
+  text-align: center;
+}

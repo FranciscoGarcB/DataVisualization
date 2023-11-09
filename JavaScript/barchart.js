@@ -14,7 +14,7 @@ tooltip = d3
 
 // Modify the margins and dimensions for a horizontal bar chart
 var margin = { top: 50, right: 30, bottom: 70, left: 150 },
-    width = 1100 - margin.left - margin.right,
+    width = 950 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
 // Append the svg object to the body of the page
