@@ -1,5 +1,5 @@
 d3.csv("../datasets/stacked_other.csv").then(function(data) {
-    var columns = ["city", "Crape myrtle", "Mexican fan palm", "Queen palm", "Southern magnolia", "ok to plant vacant", "Other"];
+    var columns = ["city", "Crape myrtle", "Mexican fan palm", "Queen palm", "Southern magnolia", "American sweetgum", "Other"];
     data = data.map(function(d) {
         var result = {};
         columns.forEach(function(column) {
@@ -29,16 +29,24 @@ d3.csv("../datasets/stacked_other.csv").then(function(data) {
             .range([0, height])
             .padding(0.1);
 
-        svg.selectAll(".bar")
+        // Inicializa las barras en la parte inferior del gráfico
+        var bars = svg.selectAll(".bar")
             .data(data)
             .enter()
             .append("rect")
             .attr("class", "bar")
             .attr("x", 0)
+            .attr("y", height) // Posición inicial en la parte inferior
+            .attr("width", 0)  // Ancho inicial cero
+            .attr("height", y.bandwidth());
+
+        // Transición para animar las barras a su posición final
+        bars.transition()
+            .duration(1000)  // Duración de la transición en milisegundos
+            .attr("x", 0)
             .attr("y", function(d) { return y(d.city); })
-            .attr("width", function(d) { return x(+d[columnName]); })
-            .attr("height", y.bandwidth())
-            
+            .attr("width", function(d) { return x(+d[columnName]); });
+
         svg.append("g")
             .attr("class", "x-axis")
             .attr("transform", "translate(0," + height + ")")
@@ -62,6 +70,6 @@ d3.csv("../datasets/stacked_other.csv").then(function(data) {
     drawHorizontalBarChart(data, "Mexican fan palm", "#chart2");
     drawHorizontalBarChart(data, "Queen palm", "#chart3");
     drawHorizontalBarChart(data, "Southern magnolia", "#chart4");
-    drawHorizontalBarChart(data, "ok to plant vacant", "#chart5");
+    drawHorizontalBarChart(data, "American sweetgum", "#chart5");
     drawHorizontalBarChart(data, "Other", "#chart6");
 });

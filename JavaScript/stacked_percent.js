@@ -86,23 +86,28 @@ d3.csv("../datasets/stacked_other.csv", function (data) {
 
     // Show the bars
     svg.append("g")
-        .selectAll("g")
-        // Enter in the stack data = loop key per key = group per group
-        .data(stackedData)
-        .enter().append("g")
-        .attr("fill", function (d, i) { return colorScheme[i]; })
-        .selectAll("rect")
-        // enter a second time = loop subgroup per subgroup to add all rectangles
-        .data(function (d) { return d; })
-        .enter().append("rect")
-        .attr("x", function (d) { return x(d.data.city); })
-        .attr("y", function (d) { return y(d[1]); }) 
-        .attr("height", function (d) { return y(d[0]) - y(d[1]); }) // Altura de la barra como diferencia entre las alturas
-        .attr("width", x.bandwidth())
-        .attr("stroke", "grey")
-        .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave);
+    .selectAll("g")
+    // Enter in the stack data = loop key per key = group per group
+    .data(stackedData)
+    .enter().append("g")
+    .attr("fill", function (d, i) { return colorScheme[i]; })
+    .selectAll("rect")
+    // enter a second time = loop subgroup per subgroup to add all rectangles
+    .data(function (d) { return d; })
+    .enter().append("rect")
+    .attr("x", function (d) { return x(d.data.city); })
+    .attr("y", function (d) { return y(0); })  // Start from the top for the animation
+    .attr("height", 0)  // Initial height set to 0
+    .attr("width", x.bandwidth())
+    .attr("stroke", "grey")
+    .on("mouseover", mouseover)
+    .on("mousemove", mousemove)
+    .on("mouseleave", mouseleave)
+    .transition()  // Add transition for a smooth animation
+    .duration(1000)  // Duration of the animation in milliseconds
+    .attr("y", function (d) { return y(d[1]); }) 
+    .attr("height", function (d) { return y(d[0]) - y(d[1]); }); // Set the final height
+        ;
 
     // Create a legend on the right side of the chart
     var legend = svg.append("g")

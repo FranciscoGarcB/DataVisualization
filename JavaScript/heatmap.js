@@ -23,10 +23,17 @@ g.append("g")
 g.append("g")
     .attr("class", "y-axis");
 
+
+
 // Function to update the heatmap and axes
 function updateHeatmap(data) {
+    // Sort data by common_name
+    data.sort(function(a, b) {
+        return d3.descending(a.common_name, b.common_name);
+    });
+
     x.domain(data.map(function(d) { return d.city; })); // Change to city
-    y.domain(data.map(function(d) { return d.common_name; })); // Change to common_name
+    y.domain(data.map(function(d) { return d.common_name; }));
     color.domain([0, d3.max(data, function(d) { return +d.count; })]);
 
     // Adjust the color scale domain for better visibility
@@ -50,12 +57,12 @@ function updateHeatmap(data) {
         .append("rect")
         .attr("class", "cell")
         .on("mouseover", showTooltip)
-        .on("mouseout", hideTooltip) // Hide the tooltip when the mouse is removed
+        .on("mouseout", hideTooltip)
         .merge(cells)
         .transition()
         .duration(1000)
-        .attr("x", function(d) { return x(d.city); }) // Change to city
-        .attr("y", function(d) { return y(d.common_name); }) // Change to common_name
+        .attr("x", function(d) { return x(d.city); })
+        .attr("y", function(d) { return y(d.common_name); })
         .attr("width", x.bandwidth())
         .attr("height", y.bandwidth())
         .style("fill", function(d) { return color(+d.count); });
@@ -87,6 +94,8 @@ d3.csv("../datasets/state_species_count.csv").then(function(data) {
     var initialData = data.filter(function(d) {
         return d.state === states[0];
     });
+
+
     updateHeatmap(initialData);
 });
 

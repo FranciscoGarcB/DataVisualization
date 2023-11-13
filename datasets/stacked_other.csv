@@ -1,14 +1,14 @@
-city,Crape myrtle,Mexican fan palm,Other,Queen palm,Southern magnolia,ok to plant vacant
-Anaheim,3320,4379,65678,1706,4568,0
-Fresno,0,0,6761,0,0,0
-Garden Grove,2355,595,12980,897,695,0
-Huntington Beach,3813,4037,42997,4681,299,0
-Irvine,0,542,57278,14,530,0
-Los Angeles,34729,37971,480539,10696,30988,113631
-Ontario,4630,1584,49319,2109,935,0
-Rancho Cucamonga,12877,0,67701,0,0,0
-Sacramento,0,1535,84505,0,1151,0
-San Diego,2207,11586,175887,22624,0,0
-San Francisco,99,967,165427,978,6219,0
-Santa Rosa,0,0,1556,0,0,0
-Stockton,7368,780,85054,743,3762,0
+city,American sweetgum,Crape myrtle,Mexican fan palm,Other,Queen palm,Southern magnolia
+Anaheim,1433,3320,4379,64245,1706,4568
+Fresno,0,0,0,6761,0,0
+Garden Grove,335,2355,595,12645,897,695
+Huntington Beach,170,3813,4037,42827,4681,299
+Irvine,0,0,542,57278,14,530
+Los Angeles,30056,34729,37971,450483,10696,30988
+Ontario,4391,4630,1584,44928,2109,935
+Rancho Cucamonga,0,12877,0,67701,0,0
+Sacramento,0,0,1535,84505,0,1151
+San Diego,0,2207,11586,175887,22624,0
+San Francisco,0,99,967,165427,978,6219
+Santa Rosa,0,0,0,1556,0,0
+Stockton,4110,7368,780,80944,743,3762
