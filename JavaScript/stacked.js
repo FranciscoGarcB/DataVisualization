@@ -41,7 +41,7 @@ d3.csv("../datasets/stacked_other.csv", function (data) {
         .call(d3.axisLeft(y));
 
     // color palette = one color per subgroup
-    var colorScheme = ['#D2DE32', '#B0D9B1', '#D83F31', '#D0E7D2', '#016A70', '#618264'];
+    var colorScheme = ['#557153', '#7D8F69', '#A9AF7E', '#D0E7D2', '#E6E5A3', '#CCC8AA'];
 
     // stack the data? --> stack per subgroup
     var stackedData = d3.stack()
@@ -100,27 +100,27 @@ d3.csv("../datasets/stacked_other.csv", function (data) {
         .on("mouseleave", mouseleave)
         .style("opacity", 0) // initialize with opacity 0
         svg.append("g")
-    .selectAll("g")
-    // Enter in the stack data = loop key per key = group per group
-    .data(stackedData)
-    .enter().append("g")
-    .attr("fill", function (d, i) { return colorScheme[i]; })
-    .selectAll("rect")
-    // enter a second time = loop subgroup per subgroup to add all rectangles
-    .data(function (d) { return d; })
-    .enter().append("rect")
-    .attr("x", function (d) { return x(d.data.city); })
-    .attr("y", function (d) { return y(0); })  // Start from the top for the animation
-    .attr("height", 0)  // Initial height set to 0
-    .attr("width", x.bandwidth())
-    .attr("stroke", "grey")
-    .on("mouseover", mouseover)
-    .on("mousemove", mousemove)
-    .on("mouseleave", mouseleave)
-    .transition()  // Add transition for a smooth animation
-    .duration(1000)  // Duration of the animation in milliseconds
-    .attr("y", function (d) { return y(d[1]); }) 
-    .attr("height", function (d) { return y(d[0]) - y(d[1]); }); // Set the final height
+        .selectAll("g")
+        // Enter in the stack data = loop key per key = group per group
+        .data(stackedData)
+        .enter().append("g")
+        .attr("fill", function (d, i) { return colorScheme[i]; })
+        .selectAll("rect")
+        // enter a second time = loop subgroup per subgroup to add all rectangles
+        .data(function (d) { return d; })
+        .enter().append("rect")
+        .attr("x", function (d) { return x(d.data.city); })
+        .attr("y", function (d) { return y(0); })  // Start from the top for the animation
+        .attr("height", 0)  // Initial height set to 0
+        .attr("width", x.bandwidth())
+        .attr("stroke", "grey")
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
+        .transition()  // Add transition for a smooth animation
+        .duration(1000)  // Duration of the animation in milliseconds
+        .attr("y", function (d) { return y(d[1]); }) 
+        .attr("height", function (d) { return y(d[0]) - y(d[1]); }); // Set the final height
 
     // Create a legend
     var legend = svg.append("g")

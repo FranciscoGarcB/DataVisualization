@@ -41,7 +41,7 @@ d3.csv("../datasets/stacked_other.csv", function (data) {
         .call(d3.axisLeft(y).ticks(10, "%")); // Añadir porcentaje al eje Y
 
     // color palette = one color per subgroup
-    var colorScheme = ['#D2DE32', '#B0D9B1', '#D83F31', '#D0E7D2', '#016A70', '#618264'];
+    var colorScheme = ['#557153', '#7D8F69', '#A9AF7E', '#D0E7D2', '#E6E5A3', '#CCC8AA'];
 
     //stack the data? --> stack per subgroup
     var stackedData = d3.stack()
