@@ -6,7 +6,7 @@ tooltip = d3
   .attr('class', 'tooltip')
 
 // Modify the margins and dimensions for a horizontal bar chart
-var margin = { top: 50, right: 30, bottom: 70, left: 150 },
+var margin = { top: 50, right: 50, bottom: 70, left: 150 },
     width = 950 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
@@ -93,7 +93,7 @@ d3.csv("datasets/species_city.csv", function(data) {
         tooltip
         .html(
             `<div>Name: ${d.common_name}</div>
-            <div>Average height:  ${d3.format('.3f')(d.mean_h)} meters</div>
+            <div>Average height in meters:  ${d3.format('.3f')(d.mean_h)}</div>
               <div>Count: ${d.count}</div>`
         )
         .style('visibility', 'visible');
