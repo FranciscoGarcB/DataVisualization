@@ -39,7 +39,7 @@ function updateHeatmap(data) {
     y.domain(data.map(function(d) { return d.common_name; }));
 
     // Adjust the color scale domain for better visibility
-    color.domain([0.01, d3.max(data, function(d) { return +d.count; }) * 0.5]);
+    color.domain([0.01, d3.max(data, function(d) { return +d.count; }) * 0.8]);
 
     var xAxisGroup = g.select(".x-axis").call(xAxis);
     xAxisGroup.selectAll("text")
@@ -69,28 +69,35 @@ function updateHeatmap(data) {
         .attr("height", y.bandwidth())
         .style("fill", function(d) { return color(+d.count); });
 
-    // Update colorbar
-    var legendLinear = colorbar.selectAll(".legend")
-        .data(color.ticks(6).reverse())
+    // Remove existing legend elements
+    colorbar.selectAll(".legend").remove();
+
+    // Add new legend elements
+    var newLegend = colorbar.selectAll(".legend")
+        .data(color.ticks(10).reverse())
         .enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d, i) {
             return "translate(50," + i * 20 + ")";
         });
 
-    legendLinear.append("rect")
+    newLegend.append("rect")
         .attr("width", 20)
         .attr("height", 20)
         .style("fill", color);
 
-    legendLinear.append("text")
+    newLegend.append("text")
         .attr("x", 26)
         .attr("y", 10)
         .attr("dy", ".35em")
         .style("text-anchor", "start")
         .text(String);
 
-    colorbar.exit().remove();
+    // Adjust legend text position to avoid overlap
+    newLegend.selectAll("text")
+        .attr("y", function(d, i) {
+            return i * 20 + 10;
+        });
 }
 
 // Load the CSV file
@@ -129,7 +136,7 @@ function showTooltip(d) {
     tooltip.transition()
         .duration(200)
         .style("opacity", 0.9);
-    tooltip.html("Tree: " + d.common_name + "<br>" + 
+    tooltip.html("Tree: " + d.common_name + "<br>" +
                 "City: " + d.city + "<br>" +
                 "Count: " + d.count)
         .style("left", (d3.event.pageX) + "px")
