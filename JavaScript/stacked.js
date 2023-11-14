@@ -40,7 +40,7 @@ d3.csv("../datasets/stacked_other.csv", function (data) {
 
     // Add Y axis
     var y = d3.scaleLinear()
-        .domain([0, 750000])
+        .domain([0, 650000])
         .range([height, 0]);
     svg.append("g")
         .call(d3.axisLeft(y));

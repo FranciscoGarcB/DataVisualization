@@ -117,7 +117,7 @@ d3.csv("../datasets/state_species_count.csv").then(function(data) {
 
     // Initially, load the data for the first state
     var initialData = data.filter(function(d) {
-        return d.state === "Other";
+        return d.state === states[0];
     });
 
     updateHeatmap(initialData);
