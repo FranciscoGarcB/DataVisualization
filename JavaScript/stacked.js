@@ -1,6 +1,6 @@
 // Set the dimensions and margins of the graph
 var margin = { top: 10, right: 180, bottom: 90, left: 50 },
-    width = 1100 - margin.left - margin.right,
+    width = 900 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
 // Append the svg object to the body of the page
@@ -11,6 +11,12 @@ var svg = d3.select("#stacked")
     .append("g")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
+
+// Create a tooltip
+var tooltip = d3.select("#stacked")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
 
 // Parse the Data
 d3.csv("../datasets/stacked_other.csv", function (data) {
@@ -48,37 +54,6 @@ d3.csv("../datasets/stacked_other.csv", function (data) {
         .keys(subgroups)
         (data);
 
-    // ----------------
-    // Create a tooltip
-    // ----------------
-    var tooltip = d3.select("#stacked")
-        .append("div")
-        .style("opacity", 0)
-        .attr("class", "tooltip")
-        .style("background-color", "white")
-        .style("border", "solid")
-        .style("border-width", "1px")
-        .style("border-radius", "5px")
-        .style("padding", "10px");
-
-    // Three functions that change the tooltip when the user hovers/moves/leaves a cell
-    var mouseover = function (d) {
-        var subgroupName = d3.select(this.parentNode).datum().key;
-        var subgroupValue = d.data[subgroupName];
-        tooltip
-            .html("Tree type: " + subgroupName + "<br>" + "Count: " + subgroupValue)
-            .style("opacity", 1);
-    }
-    var mousemove = function (d) {
-        tooltip
-            .style("left", (d3.mouse(this)[0] + 90) + "px")
-            .style("top", (d3.mouse(this)[1]) + "px");
-    }
-    var mouseleave = function (d) {
-        tooltip
-            .style("opacity", 0);
-    }
-
     // Show the bars with animation
     svg.append("g")
         .selectAll("g")
@@ -95,31 +70,12 @@ d3.csv("../datasets/stacked_other.csv", function (data) {
         .attr("height", function (d) { return y(d[0]) - y(d[1]); })
         .attr("width", x.bandwidth())
         .attr("stroke", "grey")
-        .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave)
-        .style("opacity", 0) // initialize with opacity 0
-        svg.append("g")
-        .selectAll("g")
-        // Enter in the stack data = loop key per key = group per group
-        .data(stackedData)
-        .enter().append("g")
-        .attr("fill", function (d, i) { return colorScheme[i]; })
-        .selectAll("rect")
-        // enter a second time = loop subgroup per subgroup to add all rectangles
-        .data(function (d) { return d; })
-        .enter().append("rect")
-        .attr("x", function (d) { return x(d.data.city); })
-        .attr("y", function (d) { return y(0); })  // Start from the top for the animation
-        .attr("height", 0)  // Initial height set to 0
-        .attr("width", x.bandwidth())
-        .attr("stroke", "grey")
-        .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave)
+        .on("mouseover", showTooltip)
+        .on("mousemove", moveTooltip) // Move tooltip with mouse
+        .on("mouseout", hideTooltip)
         .transition()  // Add transition for a smooth animation
         .duration(1000)  // Duration of the animation in milliseconds
-        .attr("y", function (d) { return y(d[1]); }) 
+        .attr("y", function (d) { return y(d[1]); })
         .attr("height", function (d) { return y(d[0]) - y(d[1]); }); // Set the final height
 
     // Create a legend
@@ -155,3 +111,27 @@ d3.csv("../datasets/stacked_other.csv", function (data) {
             return subgroups[i];
         });
 });
+
+// Tooltip functions
+function showTooltip(d) {
+    var subgroupName = d3.select(this.parentNode).datum().key;
+    tooltip.transition()
+        .duration(200)
+        .style("opacity", 0.9);
+    tooltip.html("City: " + d.data.city + "<br>" +
+        "Type: " + subgroupName + "<br>" +
+        "Value: " + (d[1] - d[0]))
+        .style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY - 28) + "px");
+}
+
+function moveTooltip(d) {
+    tooltip.style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY - 28) + "px");
+}
+
+function hideTooltip() {
+    tooltip.transition()
+        .duration(500)
+        .style("opacity", 0);
+}

@@ -17,6 +17,11 @@ p {
     font-size: small;
 }
 
+a{
+  text-decoration: none;
+  color: #04AA6D;
+}
+
 h4,h3 {text-align: center;}
 
 /* Add a black background color to the top navigation */
@@ -107,4 +112,19 @@ section > span {
 #my_dataviz, #stacked, #masterDiv, #heatmap-container {
   margin: 0 auto;
   text-align: center;
+}
+
+.tooltip {
+  position: absolute;
+  text-align: left;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.cell:hover {
+  stroke: #333;
+  stroke-width: 2;
 }

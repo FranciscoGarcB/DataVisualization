@@ -3,14 +3,7 @@
 tooltip = d3
   .select('body')
   .append('div')
-  .attr('class', 'd3-tooltip')
-  .style('position', 'absolute')
-  .style('z-index', '10')
-  .style('visibility', 'hidden')
-  .style('padding', '10px')
-  .style('background', 'rgba(0,0,0,0.6)')
-  .style('border-radius', '4px')
-  .style('color', '#fff')
+  .attr('class', 'tooltip')
 
 // Modify the margins and dimensions for a horizontal bar chart
 var margin = { top: 50, right: 30, bottom: 70, left: 150 },

@@ -1,15 +1,15 @@
-d3.csv("../datasets/stacked_other.csv").then(function(data) {
+d3.csv("../datasets/stacked_other.csv").then(function (data) {
     var columns = ["city", "Crape myrtle", "Mexican fan palm", "Queen palm", "Southern magnolia", "American sweetgum", "Other"];
-    data = data.map(function(d) {
+    data = data.map(function (d) {
         var result = {};
-        columns.forEach(function(column) {
+        columns.forEach(function (column) {
             result[column] = d[column];
         });
         return result;
     });
 
     function drawHorizontalBarChart(data, columnName, containerId) {
-        var margin = { top: 40, right: 30, bottom: 40, left: 110 };
+        var margin = { top: 40, right: 30, bottom: 40, left: 180 };
         var width = 380 - margin.left - margin.right;
         var height = 200 - margin.top - margin.bottom;
 
@@ -21,11 +21,11 @@ d3.csv("../datasets/stacked_other.csv").then(function(data) {
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         var x = d3.scaleLinear()
-            .domain([0, d3.max(data, function(d) { return +d[columnName]; })])
+            .domain([0, d3.max(data, function (d) { return +d[columnName]; })])
             .range([0, width]);
 
         var y = d3.scaleBand()
-            .domain(data.map(function(d) { return d.city; }))
+            .domain(data.map(function (d) { return d.city; }))
             .range([0, height])
             .padding(0.1);
 
@@ -38,14 +38,31 @@ d3.csv("../datasets/stacked_other.csv").then(function(data) {
             .attr("x", 0)
             .attr("y", height) // Posición inicial en la parte inferior
             .attr("width", 0)  // Ancho inicial cero
-            .attr("height", y.bandwidth());
+            .attr("height", y.bandwidth())
+            .on("mouseover", function (event, d) {
+                // Show tooltip on mouseover
+                var tooltip = d3.select(".tooltip");
+                tooltip.html("City: " + d.city + "<br> Count: " + d[columnName])
+                    .style("visibility", "visible");
+            })
+            .on("mousemove", function (event) {
+                // Move tooltip with the mouse
+                var tooltip = d3.select(".tooltip");
+                tooltip.style("top", (event.pageY - 10) + "px")
+                    .style("left", (event.pageX + 10) + "px");
+            })
+            .on("mouseout", function () {
+                // Hide tooltip on mouseout
+                var tooltip = d3.select(".tooltip");
+                tooltip.style("visibility", "hidden");
+            });
 
         // Transición para animar las barras a su posición final
         bars.transition()
             .duration(1000)  // Duración de la transición en milisegundos
             .attr("x", 0)
-            .attr("y", function(d) { return y(d.city); })
-            .attr("width", function(d) { return x(+d[columnName]); });
+            .attr("y", function (d) { return y(d.city); })
+            .attr("width", function (d) { return x(+d[columnName]); });
 
         svg.append("g")
             .attr("class", "x-axis")
@@ -65,6 +82,10 @@ d3.csv("../datasets/stacked_other.csv").then(function(data) {
             .style("text-anchor", "middle")
             .text(columnName);
     }
+
+    // Create a tooltip element
+    d3.select("body").append("div")
+        .attr("class", "tooltip")
 
     drawHorizontalBarChart(data, "Crape myrtle", "#chart1");
     drawHorizontalBarChart(data, "Mexican fan palm", "#chart2");
