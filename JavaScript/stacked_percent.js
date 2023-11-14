@@ -120,7 +120,7 @@ function showTooltip(d) {
         .style("opacity", 0.9);
     tooltip.html("City: " + d.data.city + "<br>" +
         "Category: " + subgroupName + "<br>" +
-        "Percentage: " + d3.format(".00000%")(d[1] - d[0]))
+        "Percentage: " + d3.format(".2%")(d[1] - d[0]))
         .style("left", (d3.event.pageX) + "px")
         .style("top", (d3.event.pageY - 28) + "px");
 }

@@ -92,8 +92,8 @@ d3.csv("datasets/species_city.csv", function(data) {
       .on('mouseover', function (d, i) {
         tooltip
         .html(
-            `<div>Name: <b>${d.common_name}</b></div>
-            <div>Average height:  ${d.mean_h} meters</div>
+            `<div>Name: ${d.common_name}</div>
+            <div>Average height:  ${d3.format('.3f')(d.mean_h)} meters</div>
               <div>Count: ${d.count}</div>`
         )
         .style('visibility', 'visible');
