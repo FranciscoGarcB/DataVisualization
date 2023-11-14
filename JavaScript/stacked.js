@@ -13,10 +13,9 @@ var svg = d3.select("#stacked")
         "translate(" + margin.left + "," + margin.top + ")");
 
 // Create a tooltip
-var tooltip = d3.select("#stacked")
+var tooltip = d3.select("body")
     .append("div")
     .attr("class", "tooltip")
-    .style("opacity", 0);
 
 // Parse the Data
 d3.csv("../datasets/stacked_other.csv", function (data) {
