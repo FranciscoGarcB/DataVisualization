@@ -1,5 +1,5 @@
 var svg = d3.select("#heatmap");
-var margin = { top: 50, right: 30, bottom: 150, left: 150 };
+var margin = { top: 50, right: 150, bottom: 150, left: 150 };
 var width = +svg.attr("width") - margin.left - margin.right;
 var height = +svg.attr("height") - margin.top - margin.bottom;
 var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -23,7 +23,10 @@ g.append("g")
 g.append("g")
     .attr("class", "y-axis");
 
-
+// Add colorbar
+var colorbar = g.append("g")
+    .attr("class", "legend")
+    .attr("transform", "translate(" + (width + 20) + ",0)");
 
 // Function to update the heatmap and axes
 function updateHeatmap(data) {
@@ -34,10 +37,9 @@ function updateHeatmap(data) {
 
     x.domain(data.map(function(d) { return d.city; })); // Change to city
     y.domain(data.map(function(d) { return d.common_name; }));
-    color.domain([0, d3.max(data, function(d) { return +d.count; })]);
 
     // Adjust the color scale domain for better visibility
-    color.domain([0, d3.max(data, function(d) { return +d.count; }) * 0.7]);
+    color.domain([0.01, d3.max(data, function(d) { return +d.count; }) * 0.5]);
 
     var xAxisGroup = g.select(".x-axis").call(xAxis);
     xAxisGroup.selectAll("text")
@@ -66,6 +68,29 @@ function updateHeatmap(data) {
         .attr("width", x.bandwidth())
         .attr("height", y.bandwidth())
         .style("fill", function(d) { return color(+d.count); });
+
+    // Update colorbar
+    var legendLinear = colorbar.selectAll(".legend")
+        .data(color.ticks(6).reverse())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d, i) {
+            return "translate(50," + i * 20 + ")";
+        });
+
+    legendLinear.append("rect")
+        .attr("width", 20)
+        .attr("height", 20)
+        .style("fill", color);
+
+    legendLinear.append("text")
+        .attr("x", 26)
+        .attr("y", 10)
+        .attr("dy", ".35em")
+        .style("text-anchor", "start")
+        .text(String);
+
+    colorbar.exit().remove();
 }
 
 // Load the CSV file
@@ -94,7 +119,6 @@ d3.csv("../datasets/state_species_count.csv").then(function(data) {
     var initialData = data.filter(function(d) {
         return d.state === "Other";
     });
-
 
     updateHeatmap(initialData);
 });
