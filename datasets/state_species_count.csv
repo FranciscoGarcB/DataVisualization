@@ -1,34 +1,4 @@
 state,city,common_name,count
-Arizona,Phoenix,African sumac,6
-Arizona,Phoenix,Aleppo pine,9
-Arizona,Phoenix,Apricot,2
-Arizona,Phoenix,Arizona ash. velvet ash,12
-Arizona,Phoenix,Ash,9
-Arizona,Phoenix,Bean tree,3
-Arizona,Phoenix,Blue paloverde,3
-Arizona,Phoenix,Bottle tree,2
-Arizona,Phoenix,California palm,3
-Arizona,Phoenix,Chilean mesquite,4
-Arizona,Phoenix,Chinese elm or lacebark elm,3
-Arizona,Phoenix,Fremont cottonwood,5
-Arizona,Phoenix,Grapefruit,9
-Arizona,Phoenix,Indian laurel fig,7
-Arizona,Phoenix,Jacaranda,3
-Arizona,Phoenix,Lemon,3
-Arizona,Phoenix,Mesquite,4
-Arizona,Phoenix,Mulberry,6
-Arizona,Phoenix,Navel,3
-Arizona,Phoenix,Oleander,4
-Arizona,Phoenix,Palo verde,4
-Arizona,Phoenix,Queen palm,16
-Arizona,Phoenix,Saguaro,5
-Arizona,Phoenix,Shamel ash,3
-Arizona,Phoenix,Sonoran palo verde,3
-Arizona,Phoenix,Sour orange,3
-Arizona,Phoenix,Sweet orange,6
-Arizona,Phoenix,Velvet mesquite,4
-Arizona,Phoenix,Velvet or arizona ash,4
-Arizona,Phoenix,White mulberry,3
 California,Anaheim,American sweetgum,1433
 California,Anaheim,Bottle tree,416
 California,Anaheim,Brisbane box,1609
@@ -329,36 +299,6 @@ Colorado,Denver,Silver maple,12735
 Colorado,Denver,Swamp white oak,4830
 Colorado,Denver,Western catalpa,2962
 Colorado,Denver,White ash,11922
-District of Columbia,Washington DC,(see notes),7005
-District of Columbia,Washington DC,American elm,5797
-District of Columbia,Washington DC,Cherry,2212
-District of Columbia,Washington DC,Cherry (snowgoose),1812
-District of Columbia,Washington DC,Chinese elm,3737
-District of Columbia,Washington DC,Chinese pistachio,1744
-District of Columbia,Washington DC,Chokecherry,1928
-District of Columbia,Washington DC,Crape myrtle,4350
-District of Columbia,Washington DC,Eastern redbud,3255
-District of Columbia,Washington DC,Ginkgo (male),2661
-District of Columbia,Washington DC,Hackberry,2119
-District of Columbia,Washington DC,Japanese zelkova,5448
-District of Columbia,Washington DC,Kwanzan cherry,2038
-District of Columbia,Washington DC,Lilac,1496
-District of Columbia,Washington DC,Littleleaf linden,2583
-District of Columbia,Washington DC,London plane tree,4948
-District of Columbia,Washington DC,Norway maple,3376
-District of Columbia,Washington DC,Overcup oak,1720
-District of Columbia,Washington DC,Pin oak,8815
-District of Columbia,Washington DC,Red maple,12543
-District of Columbia,Washington DC,Red oak,5864
-District of Columbia,Washington DC,Redbud,1974
-District of Columbia,Washington DC,Scarlet oak,2898
-District of Columbia,Washington DC,Sugar maple,5380
-District of Columbia,Washington DC,Swamp white oak,3355
-District of Columbia,Washington DC,Sweetgum,1633
-District of Columbia,Washington DC,Tupelo,2656
-District of Columbia,Washington DC,Willow oak,10006
-District of Columbia,Washington DC,Yellowwood,1985
-District of Columbia,Washington DC,Yoshino cherry,1833
 Florida,Cape Coral,Bald cypress,1724
 Florida,Cape Coral,Bottlebrush,180
 Florida,Cape Coral,Cabbage palm,6632
@@ -1256,295 +1196,6 @@ Iowa,Woodward,Silver maple,105
 Iowa,Woodward,Spruce,2
 Iowa,Woodward,Sugar maple,5
 Iowa,Woodward,White ash,2
-Kansas,Overland Park,American elm,263
-Kansas,Overland Park,Austrian pine,556
-Kansas,Overland Park,Basswood,142
-Kansas,Overland Park,Blue spruce,229
-Kansas,Overland Park,Callery pear,1357
-Kansas,Overland Park,Crabapple,1415
-Kansas,Overland Park,Eastern red cedar,501
-Kansas,Overland Park,Eastern redbud,704
-Kansas,Overland Park,Elm,145
-Kansas,Overland Park,Green ash,1928
-Kansas,Overland Park,Honeylocust,920
-Kansas,Overland Park,Lilac,145
-Kansas,Overland Park,Littleleaf linden,900
-Kansas,Overland Park,Northern red oak,548
-Kansas,Overland Park,Norway maple,562
-Kansas,Overland Park,Norway spruce,288
-Kansas,Overland Park,Pin oak,3419
-Kansas,Overland Park,Red maple,13289
-Kansas,Overland Park,River birch,270
-Kansas,Overland Park,Sawtooth oak,183
-Kansas,Overland Park,Scotch pine,231
-Kansas,Overland Park,Siberian elm,841
-Kansas,Overland Park,Silver maple,1213
-Kansas,Overland Park,Sugar maple,675
-Kansas,Overland Park,Swamp white oak,438
-Kansas,Overland Park,Sweetgum,1983
-Kansas,Overland Park,Sycamore,395
-Kansas,Overland Park,Walnut,139
-Kansas,Overland Park,Western white pine,344
-Kansas,Overland Park,White ash,7654
-Kentucky,Louisville,American beech,568
-Kentucky,Louisville,American elm,463
-Kentucky,Louisville,American sycamore,802
-Kentucky,Louisville,Black cherry,746
-Kentucky,Louisville,Black locust,575
-Kentucky,Louisville,Black walnut,653
-Kentucky,Louisville,Blackgum,424
-Kentucky,Louisville,Bur oak,495
-Kentucky,Louisville,Callery pear,387
-Kentucky,Louisville,Common hackberry,1086
-Kentucky,Louisville,Crabapple,461
-Kentucky,Louisville,Eastern red cedar,604
-Kentucky,Louisville,Flowering dogwood,489
-Kentucky,Louisville,Green ash,1404
-Kentucky,Louisville,Kentucky coffee tree,400
-Kentucky,Louisville,Northern red oak,805
-Kentucky,Louisville,Norway spruce,385
-Kentucky,Louisville,Pin oak,1678
-Kentucky,Louisville,Red maple,1538
-Kentucky,Louisville,Redbud,605
-Kentucky,Louisville,Scarlet red oak,431
-Kentucky,Louisville,Silver maple,535
-Kentucky,Louisville,Sugar maple,1810
-Kentucky,Louisville,Swamp white oak,730
-Kentucky,Louisville,Sweetgum,834
-Kentucky,Louisville,Tulip poplar,997
-Kentucky,Louisville,White ash,773
-Kentucky,Louisville,White mulberry,439
-Kentucky,Louisville,White oak,450
-Kentucky,Louisville,White pine,702
-Louisiana,New Orleans,American sycamore,621
-Louisiana,New Orleans,Bald cypress,5409
-Louisiana,New Orleans,Chinese elm,1877
-Louisiana,New Orleans,Chinese pistache,1282
-Louisiana,New Orleans,Chinese tallow tree,1201
-Louisiana,New Orleans,Citrus species,487
-Louisiana,New Orleans,Crape myrtle (including hybrids),30244
-Louisiana,New Orleans,Dahoon holly,513
-Louisiana,New Orleans,Date palm,535
-Louisiana,New Orleans,Eagleston holly,535
-Louisiana,New Orleans,Florida sweet bay magnolia bay,1795
-Louisiana,New Orleans,Hybrid holly species,3529
-Louisiana,New Orleans,Japanese privet,639
-Louisiana,New Orleans,Mexican ash,509
-Louisiana,New Orleans,Mexican fan palm,669
-Louisiana,New Orleans,Nuttall oak texas red oak,694
-Louisiana,New Orleans,Oleander,506
-Louisiana,New Orleans,Ornamental pear,2024
-Louisiana,New Orleans,Palmetto,1979
-Louisiana,New Orleans,Queen palm,1690
-Louisiana,New Orleans,Red maple,1379
-Louisiana,New Orleans,Saucer magnolia,1287
-Louisiana,New Orleans,Shumard oak,803
-Louisiana,New Orleans,Slash pine,3098
-Louisiana,New Orleans,Southern live oak,21775
-Louisiana,New Orleans,Southern magnolia,3022
-Louisiana,New Orleans,Stump,1714
-Louisiana,New Orleans,Sweet olive,551
-Louisiana,New Orleans,Water oak,948
-Louisiana,New Orleans,Willow oak,554
-Maryland,Baltimore,American elm,1588
-Maryland,Baltimore,American linden,1446
-Maryland,Baltimore,American sweetgum,2465
-Maryland,Baltimore,Blackgum,1325
-Maryland,Baltimore,Callery pear,4746
-Maryland,Baltimore,Cherry/plum,5783
-Maryland,Baltimore,Chinese elm,1195
-Maryland,Baltimore,Common crapemyrtle,1584
-Maryland,Baltimore,Eastern redbud,2420
-Maryland,Baltimore,Freeman maple,2205
-Maryland,Baltimore,Ginkgo,1623
-Maryland,Baltimore,Hybrid elm,2337
-Maryland,Baltimore,Japanese pagodatree,1476
-Maryland,Baltimore,Japanese zelkova,6706
-Maryland,Baltimore,Littleleaf linden,5933
-Maryland,Baltimore,London planetree,6033
-Maryland,Baltimore,Northern red oak,2849
-Maryland,Baltimore,Norway maple,3716
-Maryland,Baltimore,Pin oak,2427
-Maryland,Baltimore,Red maple,12895
-Maryland,Baltimore,Scarlet oak,1117
-Maryland,Baltimore,Silver maple,2664
-Maryland,Baltimore,Sugar maple,2709
-Maryland,Baltimore,Swamp white oak,1431
-Maryland,Baltimore,Thornless honeylocust,3208
-Maryland,Baltimore,Tuliptree,1342
-Maryland,Baltimore,White ash,2337
-Maryland,Baltimore,White mulberry,1519
-Maryland,Baltimore,White oak,1461
-Maryland,Baltimore,Willow oak,2997
-Massachusetts,Boston,American beech,24
-Massachusetts,Boston,American elm,11
-Massachusetts,Boston,Apple,19
-Massachusetts,Boston,Black birch,20
-Massachusetts,Boston,Black cherry,87
-Massachusetts,Boston,Black locust,8
-Massachusetts,Boston,Black oak,7
-Massachusetts,Boston,Black tupelo,18
-Massachusetts,Boston,Chestnut oak,8
-Massachusetts,Boston,Eastern hemlock,44
-Massachusetts,Boston,Eastern red cedar,39
-Massachusetts,Boston,Eastern white pine,267
-Massachusetts,Boston,European buckthorn,16
-Massachusetts,Boston,Glossy buckthorn,26
-Massachusetts,Boston,Higan cherry,7
-Massachusetts,Boston,Northern red oak,115
-Massachusetts,Boston,Northern white cedar,28
-Massachusetts,Boston,Norway maple,20
-Massachusetts,Boston,Paradise apple,7
-Massachusetts,Boston,Pitch pine,42
-Massachusetts,Boston,Red maple,150
-Massachusetts,Boston,Red pine,11
-Massachusetts,Boston,Sassafras,14
-Massachusetts,Boston,Scrub oak,7
-Massachusetts,Boston,Shagbark hickory,16
-Massachusetts,Boston,Sugar maple,59
-Massachusetts,Boston,Sycamore maple,29
-Massachusetts,Boston,Tree hardwood,71
-Massachusetts,Boston,White ash,19
-Massachusetts,Boston,White oak,30
-Michigan,Detroit,American sycamore,92
-Michigan,Detroit,Callery pear,53
-Michigan,Detroit,Common hackberry,852
-Michigan,Detroit,Cottonwood,1276
-Michigan,Detroit,Crabapple,412
-Michigan,Detroit,Elm,859
-Michigan,Detroit,Ginkgo,311
-Michigan,Detroit,Green ash,1
-Michigan,Detroit,Hedge maple,121
-Michigan,Detroit,Japanese tree lilac,489
-Michigan,Detroit,Japanese zelkova,534
-Michigan,Detroit,Kentucky coffeetree,540
-Michigan,Detroit,Littleleaf linden,382
-Michigan,Detroit,Northern red oak,535
-Michigan,Detroit,Norway maple,5
-Michigan,Detroit,Red maple,997
-Michigan,Detroit,Silver maple,5
-Michigan,Detroit,Sugar maple,298
-Michigan,Detroit,Swamp white oak,702
-Michigan,Detroit,Sweetgum,180
-Michigan,Detroit,Tulip tree,600
-Michigan,Detroit,White oak,37
-Michigan,Detroit,Willow,1735
-Michigan,Grand Rapids,American sycamore,2977
-Michigan,Grand Rapids,Black oak,839
-Michigan,Grand Rapids,Blue spruce,760
-Michigan,Grand Rapids,Callery pear,1662
-Michigan,Grand Rapids,Crabapple,694
-Michigan,Grand Rapids,Ginkgo,570
-Michigan,Grand Rapids,Green ash,2057
-Michigan,Grand Rapids,Hedge maple,1194
-Michigan,Grand Rapids,Hybrid elm,945
-Michigan,Grand Rapids,Japanese tree lilac,602
-Michigan,Grand Rapids,Japanese zelkova,541
-Michigan,Grand Rapids,Kentucky coffeetree,263
-Michigan,Grand Rapids,Littleleaf linden,3033
-Michigan,Grand Rapids,London planetree hybrid,1930
-Michigan,Grand Rapids,Northern red oak,632
-Michigan,Grand Rapids,Norway maple,20426
-Michigan,Grand Rapids,Norway spruce,819
-Michigan,Grand Rapids,Pin oak,736
-Michigan,Grand Rapids,Red maple,4523
-Michigan,Grand Rapids,Silver maple,2554
-Michigan,Grand Rapids,Sugar maple,3954
-Michigan,Grand Rapids,Swamp white oak,492
-Michigan,Grand Rapids,Sweetgum,517
-Michigan,Grand Rapids,Thornless honeylocust,5758
-Michigan,Grand Rapids,Tulip tree,148
-Michigan,Grand Rapids,White oak,1419
-Missouri,St. Louis,American sycamore,1370
-Missouri,St. Louis,Callery pear,7196
-Missouri,St. Louis,Cherry/plum,1922
-Missouri,St. Louis,Common baldcypress,574
-Missouri,St. Louis,Common hackberry,629
-Missouri,St. Louis,Eastern redbud,2838
-Missouri,St. Louis,Eastern redcedar,402
-Missouri,St. Louis,Flowering crabapple,1112
-Missouri,St. Louis,Freeman maple,1842
-Missouri,St. Louis,Ginkgo,1474
-Missouri,St. Louis,Green ash,7761
-Missouri,St. Louis,Hybrid elm,1720
-Missouri,St. Louis,Japanese tree lilac,541
-Missouri,St. Louis,Japanese zelkova,798
-Missouri,St. Louis,Littleleaf linden,3624
-Missouri,St. Louis,London planetree,2248
-Missouri,St. Louis,Northern red oak,985
-Missouri,St. Louis,Norway maple,1127
-Missouri,St. Louis,Pin oak,6498
-Missouri,St. Louis,Red maple,8572
-Missouri,St. Louis,River birch,734
-Missouri,St. Louis,Serviceberry,605
-Missouri,St. Louis,Siberian elm,713
-Missouri,St. Louis,Silver maple,3115
-Missouri,St. Louis,Sugar maple,4172
-Missouri,St. Louis,Swamp white oak,616
-Missouri,St. Louis,Sweetgum,2140
-Missouri,St. Louis,Thornless honeylocust,2814
-Missouri,St. Louis,Tuliptree,945
-Missouri,St. Louis,White ash,4557
-Nevada,Las Vegas,Afghan pine,5888
-Nevada,Las Vegas,African sumac,438
-Nevada,Las Vegas,Aleppo pine,411
-Nevada,Las Vegas,Blue palo verde,310
-Nevada,Las Vegas,California fan palm,215
-Nevada,Las Vegas,Chaste tree,1478
-Nevada,Las Vegas,Chilean mesquite,1280
-Nevada,Las Vegas,Chiltalpa,885
-Nevada,Las Vegas,Chinese pistache,929
-Nevada,Las Vegas,Date palm,941
-Nevada,Las Vegas,Desert museum palo verde,569
-Nevada,Las Vegas,Desert willow,1020
-Nevada,Las Vegas,Fremont cottonwood,309
-Nevada,Las Vegas,Honey locust,204
-Nevada,Las Vegas,Honey mesquite,585
-Nevada,Las Vegas,Lace bark elm,432
-Nevada,Las Vegas,Mediterranean fan palm,275
-Nevada,Las Vegas,Mexican fan palm,1844
-Nevada,Las Vegas,Mulga,224
-Nevada,Las Vegas,Narrow leaf ash,1073
-Nevada,Las Vegas,Shoestring acacia,1483
-Nevada,Las Vegas,Siberian elm,440
-Nevada,Las Vegas,Southern live oak,393
-Nevada,Las Vegas,Stone pine,280
-Nevada,Las Vegas,Sweet acacia,695
-Nevada,Las Vegas,Tex ash fan,1816
-Nevada,Las Vegas,Vacant site medium,705
-Nevada,Las Vegas,Velvet ash,2607
-Nevada,Las Vegas,Velvet mesquite,646
-Nevada,Las Vegas,White mulberry,606
-New Mexico,Albuquerque,Afghan pine,26
-New Mexico,Albuquerque,American elm,37
-New Mexico,Albuquerque,Arizona sycamore,45
-New Mexico,Albuquerque,Ash,148
-New Mexico,Albuquerque,Austrian pine,149
-New Mexico,Albuquerque,Blue spruce,20
-New Mexico,Albuquerque,Boxelder,29
-New Mexico,Albuquerque,Bur oak,41
-New Mexico,Albuquerque,Chinese elm,82
-New Mexico,Albuquerque,Chinese pistache,54
-New Mexico,Albuquerque,Common chokecherry,25
-New Mexico,Albuquerque,Cottonwood,52
-New Mexico,Albuquerque,Crabapple,127
-New Mexico,Albuquerque,Deodar cedar,37
-New Mexico,Albuquerque,Desert willow,63
-New Mexico,Albuquerque,Elm,39
-New Mexico,Albuquerque,Elm hybrid,68
-New Mexico,Albuquerque,Golden rain tree,47
-New Mexico,Albuquerque,Honeylocust,159
-New Mexico,Albuquerque,Japanese pagoda tree,35
-New Mexico,Albuquerque,Littleleaf linden,28
-New Mexico,Albuquerque,London plane,186
-New Mexico,Albuquerque,Northern hackberry,32
-New Mexico,Albuquerque,Oklahoma redbud,29
-New Mexico,Albuquerque,Pear,62
-New Mexico,Albuquerque,Ponderosa pine,47
-New Mexico,Albuquerque,Raywood ash,60
-New Mexico,Albuquerque,Siberian elm,216
-New Mexico,Albuquerque,Texas red oak,73
-New Mexico,Albuquerque,White ash,32
 New York,Buffalo,American elm,333
 New York,Buffalo,Callery pear,1325
 New York,Buffalo,Chokecherry,30
@@ -1614,237 +1265,338 @@ New York,Rochester,Silver maple,1013
 New York,Rochester,Sugar maple,1465
 New York,Rochester,Swamp white oak,195
 New York,Rochester,Sweetgum,786
-North Carolina,Durham,American elm,375
-North Carolina,Durham,Black gum,221
-North Carolina,Durham,Black walnut,5
-North Carolina,Durham,Callery pear,237
-North Carolina,Durham,Cherry,206
-North Carolina,Durham,Chinese elm,573
-North Carolina,Durham,Chinese fringe tree,244
-North Carolina,Durham,Chinese pistache,363
-North Carolina,Durham,Common crapemyrtle,3103
-North Carolina,Durham,Dogwood,27
-North Carolina,Durham,Eastern red cedar,160
-North Carolina,Durham,Eastern redbud,537
-North Carolina,Durham,Elm,45
-North Carolina,Durham,Ginkgo,261
-North Carolina,Durham,Hackberry,29
-North Carolina,Durham,Japanese zelkova,211
-North Carolina,Durham,Leyland cypress,25
-North Carolina,Durham,Loblolly pine,239
-North Carolina,Durham,Mulberry,16
-North Carolina,Durham,Overcup oak,326
-North Carolina,Durham,Pecan,46
-North Carolina,Durham,Red maple,718
-North Carolina,Durham,Southern magnolia,225
-North Carolina,Durham,Sugar maple,145
-North Carolina,Durham,Swamp white oak,236
-North Carolina,Durham,Sweetgum,163
-North Carolina,Durham,Trident maple,1027
-North Carolina,Durham,Water oak,189
-North Carolina,Durham,Willow oak,2777
-North Carolina,Greensboro,American elm,3
-North Carolina,Greensboro,Black walnut,220
-North Carolina,Greensboro,Cherry,60
-North Carolina,Greensboro,Chinese elm,19
-North Carolina,Greensboro,Chinese fringe tree,1
-North Carolina,Greensboro,Crepe myrtle,713
-North Carolina,Greensboro,Dogwood,228
-North Carolina,Greensboro,Eastern red cedar,58
-North Carolina,Greensboro,Eastern redbud,8
-North Carolina,Greensboro,Elm,393
-North Carolina,Greensboro,Hackberry,295
-North Carolina,Greensboro,Leyland cypress,201
-North Carolina,Greensboro,Loblolly pine,49
-North Carolina,Greensboro,Mulberry,221
-North Carolina,Greensboro,Pecan,437
-North Carolina,Greensboro,Red maple,206
-North Carolina,Greensboro,Southern magnolia,164
-North Carolina,Greensboro,Sugar maple,239
-North Carolina,Greensboro,Sweetgum,105
-North Carolina,Greensboro,Trident maple,23
-North Carolina,Greensboro,Water oak,19
-North Carolina,Greensboro,Willow oak,523
-Ohio,Columbus,American sweetgum,1622
-Ohio,Columbus,Aristocrat callery pear,1009
-Ohio,Columbus,Ash,1038
-Ohio,Columbus,Bradford callery pear,1025
-Ohio,Columbus,Callery pear,6699
-Ohio,Columbus,Cherry,1548
-Ohio,Columbus,Common hackberry,1849
-Ohio,Columbus,Crabapple,5988
-Ohio,Columbus,Eastern redbud,1256
-Ohio,Columbus,European hornbeam,1128
-Ohio,Columbus,Freeman maple,4802
-Ohio,Columbus,Green ash,7306
-Ohio,Columbus,Hedge (english) maple,1478
-Ohio,Columbus,Honey locust,6421
-Ohio,Columbus,Imperial honey locust,999
-Ohio,Columbus,Ivory silk japanese lilac,2643
-Ohio,Columbus,Littleleaf linden,3622
-Ohio,Columbus,London planetree,3124
-Ohio,Columbus,Norway maple,3846
-Ohio,Columbus,Norway spruce,998
-Ohio,Columbus,Pacific sunset maple,1363
-Ohio,Columbus,Pin oak,1228
-Ohio,Columbus,Red maple,7230
-Ohio,Columbus,Red oak,2770
-Ohio,Columbus,Redmond american basswood,1343
-Ohio,Columbus,Sawtooth oak,1918
-Ohio,Columbus,Silver maple,3156
-Ohio,Columbus,Sugar maple,6471
-Ohio,Columbus,Swamp white oak,2025
-Ohio,Columbus,White ash,5893
-Oklahoma,Oklahoma City,American  elm,293
-Oklahoma,Oklahoma City,American  sycamore,199
-Oklahoma,Oklahoma City,Austrian  pine,453
-Oklahoma,Oklahoma City,Blackjack  oak,323
-Oklahoma,Oklahoma City,Bur  oak,242
-Oklahoma,Oklahoma City,Callery  pear,263
-Oklahoma,Oklahoma City,Carya illinoinensis) pecan,85
-Oklahoma,Oklahoma City,Cedar  elm,76
-Oklahoma,Oklahoma City,Celtis laevigata) sugarberry,297
-Oklahoma,Oklahoma City,Chinese  elm,455
-Oklahoma,Oklahoma City,Chinese  pistache,567
-Oklahoma,Oklahoma City,Chinkapin  oak,86
-Oklahoma,Oklahoma City,Common  baldcypress,377
-Oklahoma,Oklahoma City,Common  crapemyrtle,689
-Oklahoma,Oklahoma City,Common  hackberry,184
-Oklahoma,Oklahoma City,Eastern  cottonwood,264
-Oklahoma,Oklahoma City,Eastern  redbud,320
-Oklahoma,Oklahoma City,Eastern  redcedar,659
-Oklahoma,Oklahoma City,Green  ash,97
-Oklahoma,Oklahoma City,Loblolly  pine,143
-Oklahoma,Oklahoma City,London  planetree,90
-Oklahoma,Oklahoma City,Ponderosa  pine,97
-Oklahoma,Oklahoma City,Post  oak,584
-Oklahoma,Oklahoma City,Sawtooth  oak,115
-Oklahoma,Oklahoma City,Shantung  maple,76
-Oklahoma,Oklahoma City,Shumard  oak,383
-Oklahoma,Oklahoma City,Siberian  elm,327
-Oklahoma,Oklahoma City,Thornless  honeylocust,118
-Oklahoma,Oklahoma City,Vacant site) vacant site,246
-Oklahoma,Oklahoma City,White  mulberry,106
-Oregon,Portland,Apple,1915
-Oregon,Portland,Ash,9293
-Oregon,Portland,Bigleaf maple,2609
-Oregon,Portland,Birch,6338
-Oregon,Portland,Cherry,13683
-Oregon,Portland,Crabapple,6779
-Oregon,Portland,Deciduous magnolia,1868
-Oregon,Portland,Deciduous oak,7056
-Oregon,Portland,Dogwood,8667
-Oregon,Portland,Elm,3356
-Oregon,Portland,Evergreen magnolia,1639
-Oregon,Portland,Fir douglas,3141
-Oregon,Portland,Ginkgo,2023
-Oregon,Portland,Hawthorn,5416
-Oregon,Portland,Hornbeam,3702
-Oregon,Portland,Japanese maple,4665
-Oregon,Portland,Linden,5490
-Oregon,Portland,Norway maple,19209
-Oregon,Portland,Other maple,10635
-Oregon,Portland,Paperbark maple,3842
-Oregon,Portland,Pear,11700
-Oregon,Portland,Persian ironwood,2235
-Oregon,Portland,Pine,3471
-Oregon,Portland,Plum,11449
-Oregon,Portland,Red maple,15475
-Oregon,Portland,Snowbell,4106
-Oregon,Portland,Sweetgum,3703
-Oregon,Portland,Tupelo,1873
-Oregon,Portland,Walnut,2351
-Oregon,Portland,Zelkova,1911
-Pennsylvania,Pittsburgh,American elm,799
-Pennsylvania,Pittsburgh,American sweetgum,892
-Pennsylvania,Pittsburgh,Black locust,689
-Pennsylvania,Pittsburgh,Callery pear,2969
-Pennsylvania,Pittsburgh,Cherry/plum:,579
-Pennsylvania,Pittsburgh,Colorado spruce,472
-Pennsylvania,Pittsburgh,Eastern arborvitae,324
-Pennsylvania,Pittsburgh,Elm:,416
-Pennsylvania,Pittsburgh,Flowering crabapple,1310
-Pennsylvania,Pittsburgh,Freeman maple,789
-Pennsylvania,Pittsburgh,Ginkgo,1218
-Pennsylvania,Pittsburgh,Hawthorn:,398
-Pennsylvania,Pittsburgh,Hedge maple,573
-Pennsylvania,Pittsburgh,Japanese tree lilac,600
-Pennsylvania,Pittsburgh,Japanese zelkova,610
-Pennsylvania,Pittsburgh,Littleleaf linden,2413
-Pennsylvania,Pittsburgh,London planetree,3238
-Pennsylvania,Pittsburgh,Northern red oak,978
-Pennsylvania,Pittsburgh,Norway maple,3715
-Pennsylvania,Pittsburgh,Pin oak,1672
-Pennsylvania,Pittsburgh,Red maple,3422
-Pennsylvania,Pittsburgh,Silver maple,433
-Pennsylvania,Pittsburgh,Stump,1079
-Pennsylvania,Pittsburgh,Sugar maple,712
-Pennsylvania,Pittsburgh,Thornless honeylocust,2019
-Pennsylvania,Pittsburgh,Vacant site large,562
-Pennsylvania,Pittsburgh,Vacant site medium,363
-Pennsylvania,Pittsburgh,Vacant site not suitable,846
-Pennsylvania,Pittsburgh,Vacant site small,2419
-Pennsylvania,Pittsburgh,White mulberry,385
-South Dakota,Sioux Falls,999,1343
-South Dakota,Sioux Falls,Ashgreen,21052
-South Dakota,Sioux Falls,Ashwhite,347
-South Dakota,Sioux Falls,Cottonwoodeastrn,420
-South Dakota,Sioux Falls,Crabapple,929
-South Dakota,Sioux Falls,Elm,913
-South Dakota,Sioux Falls,Elmsiberian,386
-South Dakota,Sioux Falls,Firwhite,210
-South Dakota,Sioux Falls,Hackberrycommon,1569
-South Dakota,Sioux Falls,Honeylocust,2223
-South Dakota,Sioux Falls,Kntky coftre,232
-South Dakota,Sioux Falls,Lindenamerican,487
-South Dakota,Sioux Falls,Lindenlittleleaf,3087
-South Dakota,Sioux Falls,Maplamur,247
-South Dakota,Sioux Falls,Maplboxelder,240
-South Dakota,Sioux Falls,Maplfreeman,4708
-South Dakota,Sioux Falls,Maplnorway,5172
-South Dakota,Sioux Falls,Maplnwy crmsn kg,455
-South Dakota,Sioux Falls,Maplred,974
-South Dakota,Sioux Falls,Maplsilver,4311
-South Dakota,Sioux Falls,Maplsugar,1221
-South Dakota,Sioux Falls,Oakbur,708
-South Dakota,Sioux Falls,Oaknorthern red,456
-South Dakota,Sioux Falls,Oakswamp white,543
-South Dakota,Sioux Falls,Pineaustrian,499
-South Dakota,Sioux Falls,Pineponderosa,314
-South Dakota,Sioux Falls,Pinescotch,434
-South Dakota,Sioux Falls,Spruceblk hills,770
-South Dakota,Sioux Falls,Sprucecolorado,1290
-South Dakota,Sioux Falls,Walnutblack,611
-Tennessee,Knoxville,American (platanus occidentalis) sycamore,152
-Tennessee,Knoxville,Black (prunus serotina) cherry,98
-Tennessee,Knoxville,Boxelder (acer negundo),113
-Tennessee,Knoxville,Chinese (ilex cornuta) holly,117
-Tennessee,Knoxville,Chinese (ulmus parvifolia) elm,147
-Tennessee,Knoxville,Common (celtis occidentalis) hackberry,282
-Tennessee,Knoxville,Common (lagerstroemia indica) crapemyrtle,517
-Tennessee,Knoxville,Common (pyrus communis) pear,144
-Tennessee,Knoxville,Eastern (cercis canadensis) redbud,323
-Tennessee,Knoxville,Eastern white (pinus strobus) pine,199
-Tennessee,Knoxville,Flowering (cornus florida) dogwood,602
-Tennessee,Knoxville,Japanese (zelkova serrata) zelkova,128
-Tennessee,Knoxville,Japanese flowering (prunus serrulata) cherry,156
-Tennessee,Knoxville,London (platanus x acerifolia) planetree,108
-Tennessee,Knoxville,Pin (quercus palustris) oak,184
-Tennessee,Knoxville,Red (acer rubrum) maple,683
-Tennessee,Knoxville,Silver (acer saccharinum) maple,172
-Tennessee,Knoxville,Southern (magnolia grandiflora) magnolia,167
-Tennessee,Knoxville,Stump (stump),131
-Tennessee,Knoxville,Sugar (acer saccharum) maple,594
-Tennessee,Knoxville,Vacant site large (vacant site large),233
-Tennessee,Knoxville,Vacant site medium (vacant site medium),243
-Tennessee,Knoxville,Vacant site small (vacant site small),942
-Tennessee,Knoxville,Willow (quercus phellos) oak,321
-Tennessee,Nashville,Japanese zelkova,166
-Tennessee,Nashville,Lacebark elm,120
-Tennessee,Nashville,London planetree,281
-Tennessee,Nashville,Sweetgum,131
-Tennessee,Nashville,Willow oak,154
-Tennessee,Nashville,Yoshino cherry,99
+Other,Albuquerque,American elm,37
+Other,Albuquerque,Ash,148
+Other,Albuquerque,Crabapple,127
+Other,Albuquerque,Eastern redbud,7
+Other,Albuquerque,Ginkgo,2
+Other,Albuquerque,Green ash,20
+Other,Albuquerque,Japanese zelkova,2
+Other,Albuquerque,Littleleaf linden,28
+Other,Albuquerque,Norway maple,1
+Other,Albuquerque,Pear,62
+Other,Albuquerque,Plum,20
+Other,Albuquerque,Silver maple,1
+Other,Albuquerque,White ash,32
+Other,Baltimore,American elm,1588
+Other,Baltimore,Ash,12
+Other,Baltimore,Callery pear,4746
+Other,Baltimore,Cherry,1
+Other,Baltimore,Dogwood,2
+Other,Baltimore,Eastern redbud,2420
+Other,Baltimore,Freeman maple,2205
+Other,Baltimore,Ginkgo,1623
+Other,Baltimore,Green ash,1111
+Other,Baltimore,Japanese zelkova,6706
+Other,Baltimore,Littleleaf linden,5933
+Other,Baltimore,London planetree,6033
+Other,Baltimore,Norway maple,3716
+Other,Baltimore,Pin oak,2427
+Other,Baltimore,Red maple,12895
+Other,Baltimore,Silver maple,2664
+Other,Baltimore,Sugar maple,2709
+Other,Baltimore,Swamp white oak,1431
+Other,Baltimore,Thornless honeylocust,3208
+Other,Baltimore,White ash,2337
+Other,Baltimore,Willow oak,2997
+Other,Boston,American elm,11
+Other,Boston,Littleleaf linden,2
+Other,Boston,Norway maple,20
+Other,Boston,Pear,1
+Other,Boston,Pin oak,1
+Other,Boston,Plum,5
+Other,Boston,Red maple,150
+Other,Boston,Silver maple,1
+Other,Boston,Sugar maple,59
+Other,Boston,White ash,19
+Other,Columbus,American elm,273
+Other,Columbus,Ash,1038
+Other,Columbus,Callery pear,6699
+Other,Columbus,Cherry,1548
+Other,Columbus,Crabapple,5988
+Other,Columbus,Eastern redbud,1256
+Other,Columbus,Freeman maple,4802
+Other,Columbus,Ginkgo,377
+Other,Columbus,Green ash,7306
+Other,Columbus,Littleleaf linden,3622
+Other,Columbus,London planetree,3124
+Other,Columbus,Norway maple,3846
+Other,Columbus,Pin oak,1228
+Other,Columbus,Red maple,7230
+Other,Columbus,Red oak,2770
+Other,Columbus,Silver maple,3156
+Other,Columbus,Sugar maple,6471
+Other,Columbus,Swamp white oak,2025
+Other,Columbus,White ash,5893
+Other,Columbus,Willow oak,166
+Other,Detroit,American elm,128
+Other,Detroit,Callery pear,53
+Other,Detroit,Cherry,11
+Other,Detroit,Crabapple,412
+Other,Detroit,Dogwood,4
+Other,Detroit,Eastern redbud,213
+Other,Detroit,Freeman maple,6
+Other,Detroit,Ginkgo,311
+Other,Detroit,Green ash,1
+Other,Detroit,Japanese zelkova,534
+Other,Detroit,Littleleaf linden,382
+Other,Detroit,London planetree,600
+Other,Detroit,Norway maple,5
+Other,Detroit,Red maple,997
+Other,Detroit,Silver maple,5
+Other,Detroit,Sugar maple,298
+Other,Detroit,Swamp white oak,702
+Other,Detroit,Sweetgum,180
+Other,Detroit,White ash,1
+Other,Detroit,Willow oak,1
+Other,Durham,American elm,375
+Other,Durham,Callery pear,237
+Other,Durham,Cherry,206
+Other,Durham,Crabapple,6
+Other,Durham,Dogwood,27
+Other,Durham,Eastern redbud,537
+Other,Durham,Ginkgo,261
+Other,Durham,Green ash,66
+Other,Durham,Japanese zelkova,211
+Other,Durham,Littleleaf linden,52
+Other,Durham,London planetree,54
+Other,Durham,Norway maple,2
+Other,Durham,Pear,6
+Other,Durham,Pin oak,22
+Other,Durham,Plum,2
+Other,Durham,Red maple,718
+Other,Durham,Silver maple,26
+Other,Durham,Sugar maple,145
+Other,Durham,Swamp white oak,236
+Other,Durham,Sweetgum,163
+Other,Durham,White ash,10
+Other,Durham,Willow oak,2777
+Other,Grand Rapids,American elm,347
+Other,Grand Rapids,Callery pear,1662
+Other,Grand Rapids,Crabapple,694
+Other,Grand Rapids,Eastern redbud,272
+Other,Grand Rapids,Freeman maple,320
+Other,Grand Rapids,Ginkgo,570
+Other,Grand Rapids,Green ash,2057
+Other,Grand Rapids,Japanese zelkova,541
+Other,Grand Rapids,Littleleaf linden,3033
+Other,Grand Rapids,Norway maple,20426
+Other,Grand Rapids,Pin oak,736
+Other,Grand Rapids,Plum,247
+Other,Grand Rapids,Red maple,4523
+Other,Grand Rapids,Silver maple,2554
+Other,Grand Rapids,Sugar maple,3954
+Other,Grand Rapids,Swamp white oak,492
+Other,Grand Rapids,Sweetgum,517
+Other,Grand Rapids,Thornless honeylocust,5758
+Other,Grand Rapids,White ash,249
+Other,Greensboro,American elm,3
+Other,Greensboro,Ash,53
+Other,Greensboro,Cherry,60
+Other,Greensboro,Crabapple,16
+Other,Greensboro,Dogwood,228
+Other,Greensboro,Eastern redbud,8
+Other,Greensboro,Freeman maple,1
+Other,Greensboro,Green ash,5
+Other,Greensboro,Norway maple,1
+Other,Greensboro,Pear,12
+Other,Greensboro,Pin oak,22
+Other,Greensboro,Plum,5
+Other,Greensboro,Red maple,206
+Other,Greensboro,Red oak,1
+Other,Greensboro,Silver maple,128
+Other,Greensboro,Sugar maple,239
+Other,Greensboro,Sweetgum,105
+Other,Greensboro,White ash,6
+Other,Greensboro,Willow oak,523
+Other,Las Vegas,Eastern redbud,5
+Other,Las Vegas,Southern live oak,393
+Other,Louisville,American elm,463
+Other,Louisville,Callery pear,387
+Other,Louisville,Cherry,11
+Other,Louisville,Crabapple,461
+Other,Louisville,Dogwood,21
+Other,Louisville,Freeman maple,14
+Other,Louisville,Ginkgo,132
+Other,Louisville,Green ash,1404
+Other,Louisville,Japanese zelkova,80
+Other,Louisville,Littleleaf linden,122
+Other,Louisville,Norway maple,27
+Other,Louisville,Pin oak,1678
+Other,Louisville,Red maple,1538
+Other,Louisville,Silver maple,535
+Other,Louisville,Sugar maple,1810
+Other,Louisville,Swamp white oak,730
+Other,Louisville,Sweetgum,834
+Other,Louisville,White ash,773
+Other,Louisville,Willow oak,243
+Other,Nashville,Callery pear,23
+Other,Nashville,Dogwood,1
+Other,Nashville,Eastern redbud,36
+Other,Nashville,Ginkgo,89
+Other,Nashville,Green ash,44
+Other,Nashville,Japanese zelkova,166
+Other,Nashville,London planetree,281
+Other,Nashville,Pin oak,2
+Other,Nashville,Red maple,51
+Other,Nashville,Sugar maple,45
+Other,Nashville,Swamp white oak,6
+Other,Nashville,Sweetgum,131
+Other,Nashville,White ash,24
+Other,Nashville,Willow oak,154
+Other,New Orleans,American elm,94
+Other,New Orleans,Crape myrtle (including hybrids),30244
+Other,New Orleans,Eastern redbud,248
+Other,New Orleans,Freeman maple,5
+Other,New Orleans,Green ash,153
+Other,New Orleans,Pin oak,14
+Other,New Orleans,Plum,12
+Other,New Orleans,Red maple,1379
+Other,New Orleans,Silver maple,13
+Other,New Orleans,Southern live oak,21775
+Other,New Orleans,Sugar maple,8
+Other,New Orleans,Swamp white oak,17
+Other,New Orleans,White ash,48
+Other,New Orleans,Willow oak,554
+Other,Overland Park,American elm,263
+Other,Overland Park,Ash,3
+Other,Overland Park,Callery pear,1357
+Other,Overland Park,Crabapple,1415
+Other,Overland Park,Dogwood,44
+Other,Overland Park,Eastern redbud,704
+Other,Overland Park,Ginkgo,136
+Other,Overland Park,Green ash,1928
+Other,Overland Park,Japanese zelkova,55
+Other,Overland Park,Littleleaf linden,900
+Other,Overland Park,London planetree,97
+Other,Overland Park,Norway maple,562
+Other,Overland Park,Pear,2
+Other,Overland Park,Pin oak,3419
+Other,Overland Park,Plum,49
+Other,Overland Park,Red maple,13289
+Other,Overland Park,Red oak,1
+Other,Overland Park,Silver maple,1213
+Other,Overland Park,Sugar maple,675
+Other,Overland Park,Swamp white oak,438
+Other,Overland Park,Sweetgum,1983
+Other,Overland Park,White ash,7654
+Other,Overland Park,Willow oak,12
+Other,Phoenix,Ash,9
+Other,Phoenix,Southern live oak,1
+Other,Pittsburgh,American elm,799
+Other,Pittsburgh,Callery pear,2969
+Other,Pittsburgh,Eastern redbud,253
+Other,Pittsburgh,Freeman maple,789
+Other,Pittsburgh,Ginkgo,1218
+Other,Pittsburgh,Green ash,248
+Other,Pittsburgh,Japanese zelkova,610
+Other,Pittsburgh,Littleleaf linden,2413
+Other,Pittsburgh,London planetree,3238
+Other,Pittsburgh,Norway maple,3715
+Other,Pittsburgh,Pin oak,1672
+Other,Pittsburgh,Red maple,3422
+Other,Pittsburgh,Silver maple,433
+Other,Pittsburgh,Sugar maple,712
+Other,Pittsburgh,Swamp white oak,232
+Other,Pittsburgh,Thornless honeylocust,2019
+Other,Pittsburgh,White ash,229
+Other,Pittsburgh,Willow oak,3
+Other,Portland,Ash,9293
+Other,Portland,Cherry,13683
+Other,Portland,Crabapple,6779
+Other,Portland,Dogwood,8667
+Other,Portland,Ginkgo,2023
+Other,Portland,Norway maple,19209
+Other,Portland,Other maple,10635
+Other,Portland,Pear,11700
+Other,Portland,Plum,11449
+Other,Portland,Red maple,15475
+Other,Portland,Silver maple,904
+Other,Portland,Sweetgum,3703
+Other,Richmond,American elm,31
+Other,Richmond,Callery pear,46
+Other,Richmond,Crabapple,4
+Other,Richmond,Eastern redbud,15
+Other,Richmond,Ginkgo,41
+Other,Richmond,Green ash,53
+Other,Richmond,Japanese zelkova,129
+Other,Richmond,Littleleaf linden,27
+Other,Richmond,London planetree,22
+Other,Richmond,Norway maple,19
+Other,Richmond,Pin oak,133
+Other,Richmond,Plum,8
+Other,Richmond,Red maple,148
+Other,Richmond,Silver maple,19
+Other,Richmond,Sugar maple,227
+Other,Richmond,Sweetgum,32
+Other,Richmond,White ash,2
+Other,Richmond,Willow oak,171
+Other,Seattle,Ash,263
+Other,Seattle,Callery pear,2540
+Other,Seattle,Dogwood,1265
+Other,Seattle,Freeman maple,662
+Other,Seattle,Littleleaf linden,2326
+Other,Seattle,Norway maple,4649
+Other,Seattle,Pear,420
+Other,Seattle,Pin oak,868
+Other,Seattle,Red maple,5333
+Other,Seattle,Red oak,2339
+Other,Seattle,Southern live oak,11
+Other,Seattle,Sugar maple,714
+Other,Seattle,Swamp white oak,261
+Other,Seattle,Sweetgum,3337
+Other,Seattle,White ash,227
+Other,Seattle,Willow oak,198
+Other,Sioux Falls,Ash,34
+Other,Sioux Falls,Ashgreen,21052
+Other,Sioux Falls,Cherry,1
+Other,Sioux Falls,Crabapple,929
+Other,Sioux Falls,Ginkgo,171
+Other,Sioux Falls,Pear,137
+Other,Sioux Falls,Plum,206
+Other,St. Louis,American elm,298
+Other,St. Louis,Ash,1
+Other,St. Louis,Callery pear,7196
+Other,St. Louis,Cherry,48
+Other,St. Louis,Dogwood,6
+Other,St. Louis,Eastern redbud,2838
+Other,St. Louis,Freeman maple,1842
+Other,St. Louis,Ginkgo,1474
+Other,St. Louis,Green ash,7761
+Other,St. Louis,Japanese zelkova,798
+Other,St. Louis,Littleleaf linden,3624
+Other,St. Louis,London planetree,2248
+Other,St. Louis,Norway maple,1127
+Other,St. Louis,Pin oak,6498
+Other,St. Louis,Red maple,8572
+Other,St. Louis,Red oak,34
+Other,St. Louis,Silver maple,3115
+Other,St. Louis,Sugar maple,4172
+Other,St. Louis,Swamp white oak,616
+Other,St. Louis,Sweetgum,2140
+Other,St. Louis,Thornless honeylocust,2814
+Other,St. Louis,White ash,4557
+Other,St. Louis,Willow oak,135
+Other,Washington DC,American elm,5797
+Other,Washington DC,Ash,284
+Other,Washington DC,Cherry,2212
+Other,Washington DC,Crabapple,1208
+Other,Washington DC,Dogwood,581
+Other,Washington DC,Eastern redbud,3255
+Other,Washington DC,Ginkgo,1266
+Other,Washington DC,Green ash,53
+Other,Washington DC,Japanese zelkova,5448
+Other,Washington DC,Littleleaf linden,2583
+Other,Washington DC,Norway maple,3376
+Other,Washington DC,Pin oak,8815
+Other,Washington DC,Red maple,12543
+Other,Washington DC,Red oak,5864
+Other,Washington DC,Silver maple,1133
+Other,Washington DC,Sugar maple,5380
+Other,Washington DC,Swamp white oak,3355
+Other,Washington DC,Sweetgum,1633
+Other,Washington DC,Thornless honeylocust,579
+Other,Washington DC,Willow oak,10006
 Texas,Austin,American elm,232
 Texas,Austin,American sycamore,31
 Texas,Austin,Arizona ash,2
@@ -1918,66 +1670,6 @@ Texas,Plano,Red oak,2598
 Texas,Plano,Redbud,14
 Texas,Plano,Southern magnolia,46
 Texas,Plano,Sweetgum,143
-Virginia,Richmond,American elm,31
-Virginia,Richmond,American sycamore,44
-Virginia,Richmond,Callery pear,46
-Virginia,Richmond,Chinese elm,10
-Virginia,Richmond,Chinese pistache,36
-Virginia,Richmond,Common crapemyrtle,161
-Virginia,Richmond,Eastern hemlock,11
-Virginia,Richmond,Eastern red cedar,16
-Virginia,Richmond,Eastern redbud,15
-Virginia,Richmond,Flowering dogwood,16
-Virginia,Richmond,Ginkgo,41
-Virginia,Richmond,Goldenrain tree,11
-Virginia,Richmond,Green ash,53
-Virginia,Richmond,Hedge maple,45
-Virginia,Richmond,Holly,13
-Virginia,Richmond,Japanese zelkova,129
-Virginia,Richmond,Kwanzan cherry,19
-Virginia,Richmond,Littleleaf linden,27
-Virginia,Richmond,Loblolly pine,41
-Virginia,Richmond,London planetree,22
-Virginia,Richmond,Norway maple,19
-Virginia,Richmond,Pin oak,133
-Virginia,Richmond,Red maple,148
-Virginia,Richmond,Silver maple,19
-Virginia,Richmond,Sugar maple,227
-Virginia,Richmond,Sweetgum,32
-Virginia,Richmond,White oak,12
-Virginia,Richmond,Willow oak,171
-Virginia,Richmond,Winged elm,79
-Virginia,Richmond,Yoshino flowering cherry,14
-Washington,Seattle,(european) white birch,2197
-Washington,Seattle,(smooth) japanese maple,4390
-Washington,Seattle,Apple/crabapple,4854
-Washington,Seattle,Autumn brilliance serviceberry,1550
-Washington,Seattle,Bigleaf maple,1794
-Washington,Seattle,Blireiana purpleleaf plum,2884
-Washington,Seattle,Callery pear,2540
-Washington,Seattle,Cherry/plum/laurel,3805
-Washington,Seattle,Dogwood,1265
-Washington,Seattle,Double chinese cherry,2357
-Washington,Seattle,Douglas fir,1413
-Washington,Seattle,English midland hawthorn,3559
-Washington,Seattle,Japanese snowbell tree,2010
-Washington,Seattle,Katsura tree,1765
-Washington,Seattle,Kousa dogwood,1940
-Washington,Seattle,Kwanzan flowering cherry,3338
-Washington,Seattle,Littleleaf linden,2326
-Washington,Seattle,London plane (tree),1744
-Washington,Seattle,Norway maple,4649
-Washington,Seattle,Norwegian sunset maple,1825
-Washington,Seattle,Pacific sunset maple,1925
-Washington,Seattle,Paperbark maple,2238
-Washington,Seattle,Purpleleaf plum variety,4432
-Washington,Seattle,Red maple,5333
-Washington,Seattle,Red oak,2339
-Washington,Seattle,Red sunset red maple,1201
-Washington,Seattle,Scarlet oak,1253
-Washington,Seattle,Sweetgum,3337
-Washington,Seattle,Thundercloud purpleleaf plum,3502
-Washington,Seattle,Western red cedar,1569
 Wisconsin,Brown Deer,American (basswood) linden,49
 Wisconsin,Brown Deer,Bur oak,3
 Wisconsin,Brown Deer,Common hackberry,59
