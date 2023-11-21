@@ -53,8 +53,8 @@ d3.json("../datasets/sankey.json").then(function(data) {
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var sankey = d3.sankey()
-    .nodeWidth(10)
-    .nodePadding(20)
+    .nodeWidth(15)
+    .nodePadding(15)
     .size([width, height]);
 
   var graph = sankey(sankeyData);
