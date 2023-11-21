@@ -40,7 +40,7 @@ d3.json("../datasets/sankey.json").then(function(data) {
 
   var margin = { top: 10, right: 100, bottom: 10, left: 20 };
   var width = 1400 - margin.left - margin.right;
-  var height = 1000 - margin.top - margin.bottom;
+  var height = 1500 - margin.top - margin.bottom;
 
   // Colores para nodos (paleta de colores verde)
   var nodeColors = d3.scaleOrdinal(d3.schemeGreens[3]);
@@ -54,7 +54,7 @@ d3.json("../datasets/sankey.json").then(function(data) {
 
   var sankey = d3.sankey()
     .nodeWidth(15)
-    .nodePadding(20)
+    .nodePadding(10)
     .size([width, height]);
 
   var graph = sankey(sankeyData);
