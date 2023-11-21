@@ -1,5 +1,5 @@
 // Cargar datos desde un archivo JSON
-d3.json("datasets/sankey.json").then(function(data) {
+d3.json("../datasets/sankey.json").then(function(data) {
 
   // Crear una función para convertir los datos en el formato necesario para el gráfico Sankey
   function convertToSankeyData(data) {
