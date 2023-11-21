@@ -1,7 +1,7 @@
-// Cargar datos desde un archivo JSON
+// Load data from a JSON file
 d3.json("../datasets/sankey.json").then(function(data) {
 
-  // Crear una función para convertir los datos en el formato necesario para el gráfico Sankey
+  // Create a function to convert data into the necessary format for the Sankey diagram
   function convertToSankeyData(data) {
     var nodes = [];
     var links = [];
@@ -12,7 +12,7 @@ d3.json("../datasets/sankey.json").then(function(data) {
       nodes.push({ name: d.common_name, type: "common_name" });
     });
 
-    // Eliminar duplicados de nodos
+    // Remove duplicate nodes
     nodes = nodes.filter(function (node, index, self) {
       return self.findIndex(n => n.name === node.name) === index;
     });
@@ -22,7 +22,7 @@ d3.json("../datasets/sankey.json").then(function(data) {
       links.push({ source: nodes.findIndex(n => n.name === d.city), target: nodes.findIndex(n => n.name === d.common_name), value: d.count });
     });
 
-    // Consolidar enlaces con el mismo origen y destino
+    // Consolidate links with the same source and target
     var consolidatedLinks = [];
     links.forEach(function(link) {
       var existingLink = consolidatedLinks.find(l => l.source === link.source && l.target === link.target);
@@ -42,7 +42,7 @@ d3.json("../datasets/sankey.json").then(function(data) {
   var width = 1200 - margin.left - margin.right;
   var height = 700 - margin.top - margin.bottom;
 
-  // Colores para nodos (paleta de colores verde)
+  // Colors for nodes (green color palette)
   var nodeColors = d3.scaleOrdinal(d3.schemeGreens[3]);
 
   var svg = d3.select("body")
@@ -59,18 +59,18 @@ d3.json("../datasets/sankey.json").then(function(data) {
 
   var graph = sankey(sankeyData);
 
-  // Dibujar enlaces
+  // Draw links
   var linkGroup = svg.append("g")
     .selectAll(".link")
     .data(graph.links)
     .enter().append("path")
     .attr("class", "link")
     .attr("d", d3.sankeyLinkHorizontal())
-    .attr("stroke", "#ddd") // Cambiar el color de los enlaces a gris claro
+    .attr("stroke", "#ddd") // Change link color to light gray
     .attr("stroke-width", function (d) { return Math.max(1, d.width); })
     .style("fill", "none")
-    .style("stroke-opacity", 0.2) // Añadir opacidad al contorno
-    .style("stroke", "#000") // Añadir color al contorno
+    .style("stroke-opacity", 0.2) // Add opacity to the outline
+    .style("stroke", "#000") // Add color to the outline
     .on("mouseover", function (d) {
       tooltip.transition()
         .duration(200)
@@ -85,7 +85,7 @@ d3.json("../datasets/sankey.json").then(function(data) {
         .style("opacity", 0);
     });
 
-  // Dibujar nodos
+  // Draw nodes
   var nodeGroup = svg.append("g")
     .selectAll(".node")
     .data(graph.nodes)
@@ -95,19 +95,19 @@ d3.json("../datasets/sankey.json").then(function(data) {
     .append("rect")
     .attr("height", function (d) { return d.y1 - d.y0; })
     .attr("width", sankey.nodeWidth())
-    .style("fill", function (d) { return nodeColors(d.type); }) // Usar colores diferentes para cada tipo de nodo
+    .style("fill", function (d) { return nodeColors(d.type); }) // Use different colors for each node type
     .style("stroke", "#000");
 
-  // Etiquetas de nodos
+  // Node labels
   var nodeLabelGroup = svg.append("g")
     .selectAll(".node-label")
     .data(graph.nodes)
     .enter().append("text")
     .attr("class", "node-label")
-    .attr("x", function (d) { return d.x1 + 6; }) // Ajustar la posición para que se vea por fuera
+    .attr("x", function (d) { return d.x1 + 6; }) // Adjust position to be visible outside
     .attr("y", function (d) { return (d.y0 + d.y1) / 2; })
     .attr("dy", "0.35em")
-    .attr("text-anchor", "start") // Alinear a la izquierda
+    .attr("text-anchor", "start") // Align to the left
     .text(function (d) { return d.name; })
     .style("fill", "#000");
 
@@ -117,7 +117,7 @@ d3.json("../datasets/sankey.json").then(function(data) {
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-  // Animación
+  // Animation
   linkGroup
     .style("stroke-dasharray", function (d) {
       var length = this.getTotalLength();
