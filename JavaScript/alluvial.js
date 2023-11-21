@@ -1,65 +1,64 @@
-// Aquí deberías cargar tus datos desde pandas
-var data = [
-    {"state": "California", "city": "Los Angeles", "common_name": "Crape myrtle", "count": 34729},
-    {"state": "California", "city": "Sacramento", "common_name": "London planetree", "count": 14111},
-    {"state": "California", "city": "Rancho Cucamonga", "common_name": "Crape myrtle", "count": 12877},
-    {"state": "Colorado", "city": "Denver", "common_name": "Green ash", "count": 25736},
-    {"state": "Colorado", "city": "Denver", "common_name": "Littleleaf linden", "count": 12961},
-    {"state": "Colorado", "city": "Aurora", "common_name": "Honeylocust", "count": 8388},
-    {"state": "District of Columbia", "city": "Washington DC", "common_name": "Red maple", "count": 12543},
-    {"state": "District of Columbia", "city": "Washington DC", "common_name": "Pin oak", "count": 8815},
-    {"state": "District of Columbia", "city": "Washington DC", "common_name": "Crape myrtle", "count": 4350}
-  ];
-  
+// Cargar datos desde un archivo JSON
+d3.json("../datasets/sankey.json").then(function(data) {
+
   // Crear una función para convertir los datos en el formato necesario para el gráfico Sankey
   function convertToSankeyData(data) {
     var nodes = [];
     var links = [];
-  
+
     data.forEach(function (d) {
       nodes.push({ name: d.state, type: "state" });
       nodes.push({ name: d.city, type: "city" });
       nodes.push({ name: d.common_name, type: "common_name" });
     });
-  
+
     // Eliminar duplicados de nodos
     nodes = nodes.filter(function (node, index, self) {
       return self.findIndex(n => n.name === node.name) === index;
     });
-  
+
     data.forEach(function (d) {
       links.push({ source: nodes.findIndex(n => n.name === d.state), target: nodes.findIndex(n => n.name === d.city), value: d.count });
       links.push({ source: nodes.findIndex(n => n.name === d.city), target: nodes.findIndex(n => n.name === d.common_name), value: d.count });
     });
-  
-    return { nodes, links };
+
+    // Consolidar enlaces con el mismo origen y destino
+    var consolidatedLinks = [];
+    links.forEach(function(link) {
+      var existingLink = consolidatedLinks.find(l => l.source === link.source && l.target === link.target);
+      if (existingLink) {
+        existingLink.value += link.value;
+      } else {
+        consolidatedLinks.push({ source: link.source, target: link.target, value: link.value });
+      }
+    });
+
+    return { nodes, links: consolidatedLinks };
   }
-  
+
   var sankeyData = convertToSankeyData(data);
-  
+
   var margin = { top: 10, right: 100, bottom: 10, left: 20 };
-  var width = 1000 - margin.left - margin.right;
-  var height = 400 - margin.top - margin.bottom;
-  
-  // Colores para nodos
-  var nodeColors = d3.scaleOrdinal()
-    .domain(["state", "city", "common_name"])
-    .range(["#8B4513", "#FFD700", "#008000"]); // Café, Amarillo, Verde
-  
+  var width = 1200 - margin.left - margin.right;
+  var height = 600 - margin.top - margin.bottom;
+
+  // Colores para nodos (paleta de colores verde)
+  var nodeColors = d3.scaleOrdinal(d3.schemeGreens[3]);
+
   var svg = d3.select("body")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  
+
   var sankey = d3.sankey()
     .nodeWidth(15)
     .nodePadding(10)
     .size([width, height]);
-  
+
   var graph = sankey(sankeyData);
-  
+
   // Dibujar enlaces
   var linkGroup = svg.append("g")
     .selectAll(".link")
@@ -76,7 +75,7 @@ var data = [
       tooltip.transition()
         .duration(200)
         .style("opacity", 0.9);
-      tooltip.html("Value: " + d.value)
+      tooltip.html(d.source.name + " <span>&#8594;</span> " + d.target.name + "<br>Count: " + d.value)
         .style("left", (d3.event.pageX + 5) + "px")
         .style("top", (d3.event.pageY - 28) + "px");
     })
@@ -85,7 +84,7 @@ var data = [
         .duration(500)
         .style("opacity", 0);
     });
-  
+
   // Dibujar nodos
   var nodeGroup = svg.append("g")
     .selectAll(".node")
@@ -98,7 +97,7 @@ var data = [
     .attr("width", sankey.nodeWidth())
     .style("fill", function (d) { return nodeColors(d.type); }) // Usar colores diferentes para cada tipo de nodo
     .style("stroke", "#000");
-  
+
   // Etiquetas de nodos
   var nodeLabelGroup = svg.append("g")
     .selectAll(".node-label")
@@ -111,10 +110,24 @@ var data = [
     .attr("text-anchor", "start") // Alinear a la izquierda
     .text(function (d) { return d.name; })
     .style("fill", "#000");
-  
+
   // Tooltip
   var tooltip = d3.select("body")
     .append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
-  
+
+  // Animación
+  linkGroup
+    .style("stroke-dasharray", function (d) {
+      var length = this.getTotalLength();
+      return length + " " + length;
+    })
+    .style("stroke-dashoffset", function (d) {
+      return this.getTotalLength();
+    })
+    .transition()
+    .duration(1500)
+    .style("stroke-dashoffset", 0);
+
+});
