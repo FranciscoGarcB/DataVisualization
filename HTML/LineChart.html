@@ -29,6 +29,7 @@
     <a href="">3rd Assignment</a>
     <a href="">4th Assignment</a>
   </div>
+  
   <script>
     function openNav() {
       document.getElementById("mySidenav").style.width = "250px";
@@ -50,31 +51,6 @@
     </div>
     <br>
 
-    <!-- Added inputs with dynamic constraints using JavaScript -->
-    <label for="firstYear">First year:</label>
-    <input type="number" id="firstYear" name="firstYear" min="1923" max="2023" oninput="updateYearConstraints()" required>
-    <label for="lastYear">Last year:</label>
-    <input type="number" id="lastYear" name="lastYear" min="1923" max="2023" required>
-    
-    <!-- Added Plot button -->
-    <button onclick="plotData()">Plot</button>
-
-    <script>
-      function updateYearConstraints() {
-        var firstYearInput = document.getElementById("firstYear");
-        var lastYearInput = document.getElementById("lastYear");
-
-        // Validar y ajustar el valor de lastYearInput
-        if (parseInt(firstYearInput.value) > parseInt(lastYearInput.value)) {
-          lastYearInput.value = firstYearInput.value;
-        }
-
-        // Establecer las restricciones de lastYearInput basándose en firstYearInput
-        lastYearInput.min = parseInt(firstYearInput.value);
-        lastYearInput.max = parseInt(firstYearInput.value) + 10;
-      }
-    </script>
-  
 
     <div id="my_dataviz"></div>
   </section>
