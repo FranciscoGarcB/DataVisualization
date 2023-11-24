@@ -40,7 +40,7 @@ d3.json("../datasets/sankey.json").then(function(data) {
 
   var margin = { top: 10, right: 150, bottom: 10, left: 50 };
   var width = 1000 - margin.left - margin.right;
-  var height = 700 - margin.top - margin.bottom;
+  var height = 750 - margin.top - margin.bottom;
 
   // Colors for nodes (green color palette)
   var nodeColors = d3.scaleOrdinal(d3.schemeGreens[3]);
