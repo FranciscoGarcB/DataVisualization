@@ -38,8 +38,8 @@ d3.json("../datasets/sankey.json").then(function(data) {
 
   var sankeyData = convertToSankeyData(data);
 
-  var margin = { top: 10, right: 120, bottom: 10, left: 120 };
-  var width = 1000 - margin.left - margin.right;
+  var margin = { top: 10, right: 150, bottom: 10, left: 120 };
+  var width = 800 - margin.left - margin.right;
   var height = 700 - margin.top - margin.bottom;
 
   // Colors for nodes (green color palette)
