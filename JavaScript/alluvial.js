@@ -38,7 +38,7 @@ d3.json("../datasets/sankey.json").then(function(data) {
 
   var sankeyData = convertToSankeyData(data);
 
-  var margin = { top: 10, right: 150, bottom: 10, left: 10 };
+  var margin = { top: 10, right: 100, bottom: 10, left: 10 };
   var width = 1000 - margin.left - margin.right;
   var height = 700 - margin.top - margin.bottom;
 
