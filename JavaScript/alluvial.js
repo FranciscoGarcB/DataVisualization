@@ -38,9 +38,9 @@ d3.json("../datasets/sankey.json").then(function(data) {
 
   var sankeyData = convertToSankeyData(data);
 
-  var margin = { top: 10, right: 150, bottom: 10, left: 150 };
-  var width = 1200 - margin.left - margin.right;
-  var height = 700 - margin.top - margin.bottom;
+  var margin = { top: 10, right: 150, bottom: 10, left: 20 };
+  var width = 1000 - margin.left - margin.right;
+  var height = 500 - margin.top - margin.bottom;
 
   // Colors for nodes (green color palette)
   var nodeColors = d3.scaleOrdinal(d3.schemeGreens[3]);
