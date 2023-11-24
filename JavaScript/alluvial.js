@@ -38,14 +38,14 @@ d3.json("../datasets/sankey.json").then(function(data) {
 
   var sankeyData = convertToSankeyData(data);
 
-  var margin = { top: 10, right: 150, bottom: 10, left: 20 };
+  var margin = { top: 10, right: 150, bottom: 10, left: 50 };
   var width = 1000 - margin.left - margin.right;
-  var height = 500 - margin.top - margin.bottom;
+  var height = 700 - margin.top - margin.bottom;
 
   // Colors for nodes (green color palette)
   var nodeColors = d3.scaleOrdinal(d3.schemeGreens[3]);
 
-  var svg = d3.select("body")
+  var svg = d3.select("#my_dataviz")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
