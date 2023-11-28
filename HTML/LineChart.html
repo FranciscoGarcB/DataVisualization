@@ -15,6 +15,11 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../CSS/style.css">
   <script src="https://d3js.org/d3.v4.js"></script>
+  <style>
+    .tooltip{
+      visibility: hidden;
+    }
+  </style>
 </head>
 
 <body>
@@ -49,8 +54,16 @@
     </div>
     <br>
 
+    <p>
+      For this visualization I added filters for region and also for initial and last year,
+      with at most 9 years of difference between. So we can see the changes on temperatures on only 10
+      consecutive years. <br> <br>
+      I decided to plot the graphs as small multiples, since there are many objects
+      (2 lines and 1 scatter plot) per year, which would make it very difficult to read.
+    </p>
+
     <label for="RegionSelect">Region:</label>
-    <select id="RegionSelect"></select> <br><br>
+    <select id="RegionSelect"></select>
 
     <label for="initialYear">Initial Year:</label>
     <select id="initialYear" onchange="updateLastYearOptions()">
@@ -58,9 +71,14 @@
 
     <label for="lastYear">Last Year:</label>
     <select id="lastYear">
-    </select>
+    </select> <br> <br>
+    
+    <!-- <input  type="radio" name="chartType" id="Lines" checked> Line Chart
+    <input type="radio" name="chartType" id="SmallMultiples"> Small Multiples
+    <br> <br>  -->
 
-    <div id="my_dataviz"></div>
+    <h4>Temperatures by month</h4> <br>
+    <div id="my_dataviz" style="position: relative;"></div>
     <script src="../JavaScript/linechart.js"></script>
 
   </section>

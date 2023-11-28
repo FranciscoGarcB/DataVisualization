@@ -1,4 +1,3 @@
-
 // Tooltip
 tooltip = d3
   .select('body')
