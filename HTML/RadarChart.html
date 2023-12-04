@@ -50,7 +50,22 @@
     </div>
     <br>
 
+    <!-- Populate select tags with script -->
+    <label for="RegionSelect">Region:</label>
+    <select id="RegionSelect"></select>
+
+    <label for="initialYear">Initial Year:</label>
+    <select id="initialYear" onchange="updateLastYearOptions()"></select>
+
+    <label for="lastYear">Last Year:</label>
+    <select id="lastYear"></select> <br> <br>
+    
+    <script src="../JavaScript/generalScripts/createSelectTags.js"></script>
+
+    <!-- Viz space -->
     <div id="my_dataviz"></div>
+    <script src="../JavaScript/radarchart.js"></script>
+
 
   </section>
 </body>

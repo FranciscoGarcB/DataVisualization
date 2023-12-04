@@ -4,74 +4,6 @@ tooltip = d3
   .append('div')
   .attr('class', 'tooltip')
 
-// Dynamically populate initialYear and lastYear options
-var initialYearSelect = document.getElementById("initialYear");
-var lastYearSelect = document.getElementById("lastYear");
-
-// Generate options for years from 1923 to 2023
-for (var year = 1923; year <= 2023; year++) {
-  var option = document.createElement("option");
-  option.value = year;
-  option.text = year;
-  initialYearSelect.add(option);
-  lastYearSelect.add(option.cloneNode(true));
-}
-
-// Update lastYear options based on initialYear selection
-function updateLastYearOptions() {
-  var selectedInitialYear = initialYearSelect.value;
-  // Clear previous options
-  lastYearSelect.innerHTML = "";
-  
-  // Generate options for years within a 10-year range, with a maximum of 2023
-  for (var year = parseInt(selectedInitialYear); year <= Math.min(parseInt(selectedInitialYear) + 9, 2023); year++) {
-    var option = document.createElement("option");
-    option.value = year;
-    option.text = year;
-    lastYearSelect.add(option);
-  }
-}
-
-// Read the CSV file
-d3.csv("../datasets/temps.csv", function (data) {
-  // Extract unique values from the "RegionName" column
-  var uniqueRegions = [...new Set(data.map(d => d.RegionName))];
-
-  // Default value
-  var defaultRegion = "National";
-
-  // Remove the default value from the uniqueRegions array if present
-  var index = uniqueRegions.indexOf(defaultRegion);
-  if (index !== -1) {
-      uniqueRegions.splice(index, 1);
-  }
-
-  // Populate the select element with options
-  var select = d3.select("#RegionSelect");
-
-  // Add a default option with the desired value
-  select.append("option")
-    .text(defaultRegion)
-    .attr("value", defaultRegion);
-
-  // Append other options
-  select
-    .selectAll("option.region")
-    .data(uniqueRegions)
-    .enter()
-    .append("option")
-    .classed("region", true)
-    .text(function(d) {
-      return d;
-    })
-    .attr("value", function(d) {
-      return d;
-    });
-});
-
-
-
-
 // Read the CSV file
 d3.csv("../datasets/temps.csv", function (data) {
   // Set up initial values for RegionSelect and initialYear
@@ -199,33 +131,6 @@ d3.csv("../datasets/temps.csv", function (data) {
         .on('mouseout', function () {
           tooltip.html(``).style('visibility', 'hidden');
         });
-
-
-      // Append circles for the "Average" data
-      svgGroup.selectAll("circle")
-      .data(months.map((month, index) => ({ month, value: +filteredDataAvg[i][month] })))
-      .enter()
-      .append("circle")
-      .attr("cx", d => xScale(d.month) + xScale.bandwidth() / 2)
-      .attr("cy", d => yScale(d.value))
-      .attr("r", 2)  // Adjust the radius as needed
-      .attr("fill", "green").on("mouseover",function (d, i) {
-        tooltip
-        .html(
-            `<div>Month: ${d.month}</div>
-            <div>Temperature:  ${d3.format('.3f')(d.mean_h)} °C</div>
-              <div>Type: Average</div>`
-        )
-        .style('visibility', 'visible');
-      })
-      .on('mousemove', function () {
-        tooltip
-          .style('top', d3.event.pageY - 10 + 'px')
-          .style('left', d3.event.pageX + 10 + 'px');
-      })
-      .on('mouseout', function () {
-        tooltip.html(``).style('visibility', 'hidden');
-      });;
 
       // Add title with the year to each SVG container
       svgGroup.append("text")

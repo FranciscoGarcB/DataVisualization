@@ -13,6 +13,7 @@
   <meta name="msapplication-config" content="../Images/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
   <meta charset="UTF-8">
+  <script src="../JavaScript/generalScripts/multiselect-dropdown.js" ></script>
   <link rel="stylesheet" href="../CSS/style.css">
   <script src="https://d3js.org/d3.v4.js"></script>
   <style>
@@ -54,34 +55,13 @@
     </div>
     <br>
 
-    <p>
-      For this visualization I added filters for region and also for initial and last year,
-      with at most 9 years of difference between. So we can see the changes on temperatures on only 10
-      consecutive years. <br> <br>
-      I decided to plot the graphs as small multiples, since there are many objects
-      (2 lines and 1 scatter plot) per year, which would make it very difficult to read.
-    </p>
+    <!-- Actual content -->
 
-    <!-- Populate select tags with script -->
-    <label for="RegionSelect">Region:</label>
-    <select id="RegionSelect"></select>
-
-    <label for="initialYear">Initial Year:</label>
-    <select id="initialYear" onchange="updateLastYearOptions()"></select>
-
-    <label for="lastYear">Last Year:</label>
-    <select id="lastYear"></select> <br> <br>
-    
-    <script src="../JavaScript/generalScripts/createSelectTags.js"></script>
-    
-    <!-- <input  type="radio" name="chartType" id="Lines" checked> Line Chart
-    <input type="radio" name="chartType" id="SmallMultiples"> Small Multiples
-    <br> <br>  -->
 
     <!-- Viz space -->
     <h4>Temperatures by month</h4> <br>
     <div id="my_dataviz" style="position: relative;"></div>
-    <script src="../JavaScript/linechart.js"></script>
+    <script src="../JavaScript/linechart2.js"></script>
 
   </section>
 </body>
