@@ -47,14 +47,26 @@
   <section>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
     <h3> Section 3: Distributions and Timelines</h3>
+    <!-- Add the back icon -->
+    <a href="LineChart.html" onclick="goBack()" style="position: absolute; top: 160px; right: 20px; font-size: 20px;">&#8592; Back</a>
     <div class="topnav">
       <a class="active" href="LineChart.html">Line Chart</a>
       <a href="RadarChart.html">Radar Chart</a>
       <a href="RidgeLine.html">Ridge Line</a>
     </div>
     <br>
-
+    
     <!-- Actual content -->
+
+    <p>
+      For this visualization I added filters for region and also for initial and last year,
+      with at most 9 years of difference between. So we can see the changes on temperatures on only 10
+      consecutive years. <br> <br>
+      I decided to plot the graphs as small multiples, since there are many objects
+      (2 lines and 1 scatter plot) per year, making it more readable.
+    </p>
+    
+
     <!-- Populate select tags with script -->
     <label for="RegionSelect">Region:</label>
     <select id="RegionSelect"></select> 
