@@ -13,7 +13,6 @@
   <meta name="msapplication-config" content="../Images/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
   <meta charset="UTF-8">
-  <script src="../JavaScript/generalScripts/multiselect-dropdown.js" ></script>
   <link rel="stylesheet" href="../CSS/style.css">
   <script src="https://d3js.org/d3.v4.js"></script>
   <style>
@@ -56,7 +55,10 @@
     <br>
 
     <!-- Actual content -->
-
+    <!-- Populate select tags with script -->
+    <label for="RegionSelect">Region:</label>
+    <select id="RegionSelect"></select> 
+    <script src="../JavaScript/generalScripts/createRegionTag.js"></script>
 
     <!-- Viz space -->
     <h4>Temperatures by month</h4> <br>
