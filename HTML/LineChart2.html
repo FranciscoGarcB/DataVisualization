@@ -58,7 +58,15 @@
     <!-- Populate select tags with script -->
     <label for="RegionSelect">Region:</label>
     <select id="RegionSelect"></select> 
-    <script src="../JavaScript/generalScripts/createRegionTag.js"></script>
+
+    
+    <label for="initialYear">Initial Year:</label>
+    <select id="initialYear" onchange="updateLastYearOptions()"></select>
+
+    <label for="lastYear">Last Year:</label>
+    <select id="lastYear"></select> <br> <br>
+
+    <script src="../JavaScript/generalScripts/createSelectTags.js"></script>
 
     <!-- Viz space -->
     <h4>Temperatures by month</h4> <br>

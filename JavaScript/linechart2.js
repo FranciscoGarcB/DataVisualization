@@ -1,282 +1,214 @@
 // Tooltip
-const tooltip = d3
+tooltip = d3
   .select('body')
   .append('div')
-  .attr('class', 'tooltip');
+  .attr('class', 'tooltip')
 
-// Selecciona el elemento 'select' con id 'RegionSelect'
-const regionSelect = d3.select('#RegionSelect');
+// Read the CSV file
+d3.csv("../datasets/temps.csv", function (data) {
+  // Set up initial values for RegionSelect and initialYear
+  let selectedRegion = "National"; // You can set a default region
+  let initialYear = 1923; // You can set a default initial year
+  let lastYear = 1923; // You can set a default last year
 
-// Selecciona el elemento 'div' con id 'my_dataviz'
-const myDataviz = d3.select('#my_dataviz');
+  // Function to update the chart based on user selections
+  function updateChart() {
+    // Filter the data based on user selections
+    const filteredDataMin = data.filter(d => d.RegionName === selectedRegion && d.Type === "Minimum" && +d.Year >= initialYear && +d.Year <= lastYear);
+    const filteredDataMax = data.filter(d => d.RegionName === selectedRegion && d.Type === "Maximum" && +d.Year >= initialYear && +d.Year <= lastYear);
+    const filteredDataAvg = data.filter(d => d.RegionName === selectedRegion && d.Type === "Average" && +d.Year >= initialYear && +d.Year <= lastYear);
 
-// Función para generar la gráfica
-function generateLineChart(selectedRegion) {
-  // Elimina la gráfica existente antes de generar una nueva
-  myDataviz.selectAll('*').remove();
+    // Extract months and corresponding temperature values
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  // Read the CSV file
-  d3.csv("../datasets/temps_fallback.csv", function (data) {
-    // Filtra los datos por el valor seleccionado en el tag 'select'
-    const filteredDataMin = data.filter(d => d.RegionName === selectedRegion && d.Type === 'Minimum');
-    const filteredDataMax = data.filter(d => d.RegionName === selectedRegion && d.Type === 'Maximum');
-    const filteredDataAvg = data.filter(d => d.RegionName === selectedRegion && d.Type === 'Average');
-    
-    // Obtiene las columnas de meses
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    // Set up the SVG dimensions
+    const margin = { top: 30, right: 30, bottom: 50, left: 40 };
+    const width = 450 - margin.left - margin.right;
+    const height = 250 - margin.top - margin.bottom;
 
-    // Convierte los valores de temperatura a números
-    const processData = (filteredData) => {
-      filteredData.forEach(d => {
-        months.forEach(month => {
-          d[month] = +d[month];
+    // Remove existing SVG to update the chart
+    d3.select("#my_dataviz").selectAll("svg").remove();
+
+    // Create a new SVG container for each year
+    const svgContainer = d3.select("#my_dataviz")
+      .selectAll("svg")
+      .data(filteredDataMin)
+      .enter()
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .style("opacity", 0)
+      .call(enter => enter.transition().duration(1000).style("opacity", 1)); // Apply the transition
+
+    // Append a group element to each SVG container
+    svgContainer.each(function (d, i) {
+      const svg = d3.select(this);
+      const svgGroup = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      // Set up scales for x and y axes
+      const xScale = d3.scaleBand()
+        .domain(months)
+        .range([0, width])
+        .padding(0.1);
+
+      const yScale = d3.scaleLinear()
+        .domain([
+          d3.min(filteredDataMin, d => d3.min(months, month => +d[month])),
+          d3.max(filteredDataMax, d => d3.max(months, month => +d[month])),
+        ])
+        .range([height, 0]);
+
+      // Create x and y axes
+      const xAxis = d3.axisBottom(xScale);
+      const yAxis = d3.axisLeft(yScale);
+
+      // Append x and y axes to each SVG container
+      svgGroup.append("g")
+        .attr("class", "x-axis")
+        .attr("transform", `translate(0,${height})`)
+        .call(xAxis);
+
+      svgGroup.append("g")
+        .attr("class", "y-axis")
+        .call(yAxis);
+
+      // Create line functions for the temperature data
+      const lineMin = d3.line()
+        .x((_, i) => xScale(months[i]))
+        .y(d => yScale(+d));
+
+      const lineMax = d3.line()
+        .x((_, i) => xScale(months[i]))
+        .y(d => yScale(+d));
+
+      const lineAvg = d3.line()
+        .x((_, i) => xScale(months[i]))
+        .y(d => yScale(+d));
+
+
+      // Append lines to each SVG container
+
+      // Append line for the "Minimum" data
+      svgGroup.append("path")
+      .datum(months.map(month => +d[month]))
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-width", 1.5)
+      .attr("d", lineMin);
+
+      // Append line for the "Maximum" data
+      svgGroup.append("path")
+        .datum(months.map(month => +filteredDataMax[i][month]))
+        .attr("fill", "none")
+        .attr("stroke", "red")
+        .attr("stroke-width", 1.5)
+        .attr("d", lineMax);
+
+      // Append circles for the "Average" data
+      svgGroup.selectAll("circle")
+        .data(months.map((month, index) => ({ month, value: +filteredDataAvg[i][month] })))
+        .enter()
+        .append("circle")
+        .attr("cx", d => xScale(d.month) + xScale.bandwidth() / 2)
+        .attr("cy", d => yScale(d.value))
+        .attr("r", 2)
+        .attr("fill", "green")
+        .on("mouseover", function (d, i) {
+          tooltip
+            .html(
+              `<div>Month: ${d.month}</div>
+              <div>Temperature:  ${d3.format('.3f')(d.value)} °C</div>
+              <div>Type: Average</div>`
+            )
+            .style('visibility', 'visible');
+        })
+        .on('mousemove', function () {
+          tooltip
+            .style('top', d3.event.pageY - 10 + 'px')
+            .style('left', d3.event.pageX + 10 + 'px');
+        })
+        .on('mouseout', function () {
+          tooltip.html(``).style('visibility', 'hidden');
         });
+
+      // Add title with the year to each SVG container
+      svgGroup.append("text")
+        .attr("x", width / 2)
+        .attr("y", -margin.top / 2)
+        .attr("text-anchor", "middle")
+        .style("font-size", "12px")
+        .style("font-family", "Custom-RobotoSlab")
+        .text(d => `${d.Year}`);
+
+      // Add label to y-axis
+      svgGroup.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -margin.left)
+        .attr("x", -height / 2)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .style("font-size", "12px")
+        .text("°C");
       });
 
-      // Prepara los datos para la gráfica de líneas
-      return filteredData.map(d => ({
-        year: d.Year,
-        type: d.Type,
-        values: months.map(month => ({ month, value: d[month], color: d3.schemeCategory10[months.indexOf(month)] }))
-      }));
-    };
+      // Create a legend container
+    const legendContainer = d3.select("#my_dataviz")
+    .append("svg")
+    .attr("width", 100)
+    .attr("height", 100)
+    .attr("class", "legend-container")
+    .style("position", "absolute")
+    .style("top", "10px")
+    .style("right", "10px");
 
-    const lineDataMin = processData(filteredDataMin);
-    const lineDataMax = processData(filteredDataMax);
-    const lineDataAvg = processData(filteredDataAvg);
+  // Add legend items
+  const legendItems = [
+    { type: "Minimum", label: "Minimum", shape: "line", color: "steelblue" },
+    { type: "Maximum", label: "Maximum", shape: "line", color: "red" },
+    { type: "Average", label: "Average", shape: "circle", color: "green" },
+  ];
 
-    // Configura el tamaño y márgenes del gráfico
-    const margin = { top: 20, right: 30, bottom: 30, left: 50 };
-    const width = 1000 - margin.left - margin.right;
-    const height = 1000 - margin.top - margin.bottom;
+  legendContainer.selectAll("g")
+    .data(legendItems)
+    .enter()
+    .append("g")
+    .attr("transform", (_, i) => `translate(0, ${i * 20})`)
+    .each(function (d) {
+      const group = d3.select(this);
+      if (d.shape === "line") {
+        group.append("line")
+          .attr("x1", 0)
+          .attr("y1", 8)
+          .attr("x2", 15)
+          .attr("y2", 8)
+          .attr("stroke", d.color);
+      } else if (d.shape === "circle") {
+        group.append("circle")
+          .attr("cx", 7.5)
+          .attr("cy", 8)
+          .attr("r", 5)
+          .attr("fill", d.color);
+      }
 
-    // Configura la escala para el eje x
-    const xScale = d3.scaleBand().domain(months).range([0, width]).padding(0.1);
-
-    // Configura la escala para el eje y
-    const yScale = d3.scaleLinear().domain([
-      d3.min([...lineDataMin, ...lineDataMax], d => d3.min(d.values, v => v.value)),
-      d3.max([...lineDataMin, ...lineDataMax], d => d3.max(d.values, v => v.value))
-    ]).range([height, 0]);
-
-    // Configura la función de línea
-    const line = d3.line()
-      .x(d => xScale(d.month) + xScale.bandwidth() / 2)
-      .y(d => yScale(d.value));
-
-    // Configura la escala de colores
-    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
-
-    // Crea el contenedor svg para el gráfico
-    const svg = myDataviz.append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
-      .append('g')
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-    // Añade las líneas al gráfico (Minimum)
-svg.selectAll('.line-min')
-.data(lineDataMin)
-.enter().append('path')
-.attr('class', 'line-min')
-.attr('d', d => line(d.values))
-.style('fill', 'none')
-.style('stroke', (d, i) => colorScale(d.year))
-.style('stroke-opacity', d => (d.type === 'Minimum' ? 0.3 : 1))
-.attr("stroke-width", 3)
-.on("mouseover", function (d) {
-  // Cambia el color de todos los círculos y líneas a gris
-  svg.selectAll('.circle-avg')
-    .style('fill', '#E9E9E9');
-  svg.selectAll('.line-min, .line-max')
-    .style('stroke', '#E9E9E9');
-
-  // Muestra la información del tooltip para la línea actual (Minimum)
-  tooltip
-    .html(
-      `<div>Year: ${d.year}</div>
-      <div>Type: Minimum</div>`
-    )
-    .style('visibility', 'visible');
-
-  // Cambia el color de las líneas del mismo año a su color original
-  svg.selectAll('.line-min, .line-max')
-    .filter(line => line.year === d.year)
-    .style('stroke', line => colorScale(line.year));
-  svg.selectAll('.circle-avg')
-    .filter(circle => circle.year === d.year)
-    .style('fill', circle => colorScale(circle.year));
-})
-.on('mousemove', function () {
-  tooltip
-    .style('top', d3.event.pageY - 10 + 'px')
-    .style('left', d3.event.pageX + 10 + 'px');
-})
-.on('mouseout', function () {
-  // Cambia el color de todos los círculos y líneas a sus colores originales
-  svg.selectAll('.circle-avg')
-    .style('fill', d => colorScale(d.year))
-    .style('fill-opacity', d => (d.type === 'Average' ? 0.6 : 1));
-  svg.selectAll('.line-min, .line-max')
-    .style('stroke', (d, i) => colorScale(d.year));
-
-  // Oculta el tooltip al salir de la línea
-  tooltip.html('').style('visibility', 'hidden');
-});
-
-   // Añade los círculos al gráfico (Average)
-  svg.selectAll('.circle-avg')
-  .data(lineDataAvg)
-  .enter().append('g')
-  .attr('class', 'circle-avg-group')
-  .selectAll('circle')
-  .data(d => d.values.map(value => ({ year: d.year, month: value.month, type: d.type, value: value.value })))
-  .enter().append('circle')
-  .attr('class', 'circle-avg')
-  .attr('cx', d => xScale(d.month) + xScale.bandwidth() / 2)
-  .attr('cy', d => yScale(d.value))
-  .attr('r', 5) // Ajusta el radio de los círculos aquí
-  .style('fill', d => colorScale(d.year)) // Usa el color del año para asignar un color diferente a cada círculo
-  .style('fill-opacity', d => (d.type === 'Average' ? 0.6 : 1)) // Ajusta la opacidad de los círculos Average
-  .on("mouseover", function (d) {
-    // Cambia el color de todos los círculos y líneas a gris
-    svg.selectAll('.circle-avg')
-      .style('fill', '#E9E9E9');
-    svg.selectAll('.line-min, .line-max')
-      .style('stroke', '#E9E9E9');
-
-    // Muestra la información del tooltip para el círculo actual (Average)
-    tooltip
-      .html(
-        `<div>Year: ${d.year}</div>
-        <div>Month: ${d.month}</div>
-        <div>Type: ${d.type}</div>
-        <div>Value: ${d.value}</div>`
-      )
-      .style('visibility', 'visible');
-
-    // Cambia el color del círculo actual y las líneas del mismo año a su color original
-    d3.select(this)
-      .style('fill', colorScale(d.year));
-    svg.selectAll('.line-min, .line-max')
-      .filter(line => line.year === d.year)
-      .style('stroke', line => colorScale(line.year));
-  })
-  .on('mousemove', function () {
-    tooltip
-      .style('top', d3.event.pageY - 10 + 'px')
-      .style('left', d3.event.pageX + 10 + 'px');
-  })
-  .on('mouseout', function () {
-    // Cambia el color de todos los círculos y líneas a sus colores originales
-    svg.selectAll('.circle-avg')
-      .style('fill', d => colorScale(d.year))
-      .style('fill-opacity', d => (d.type === 'Average' ? 0.6 : 1));
-    svg.selectAll('.line-min, .line-max')
-      .style('stroke', (d, i) => colorScale(d.year));
-
-    // Oculta el tooltip al salir del círculo
-    tooltip.html('').style('visibility', 'hidden');
-  });
-
-
-  // Añade las líneas al gráfico (Maximum)
-svg.selectAll('.line-max')
-.data(lineDataMax)
-.enter().append('path')
-.attr('class', 'line-max')
-.attr('d', d => line(d.values))
-.style('fill', 'none')
-.style('stroke', (d, i) => colorScale(d.year))
-.attr("stroke-width", 3)
-.on("mouseover", function (d) {
-  // Cambia el color de todos los círculos y líneas a gris
-  svg.selectAll('.circle-avg')
-    .style('fill', '#E9E9E9');
-  svg.selectAll('.line-min, .line-max')
-    .style('stroke', '#E9E9E9');
-
-  // Muestra la información del tooltip para la línea actual (Maximum)
-  tooltip
-    .html(
-      `<div>Year: ${d.year}</div>
-      <div>Type: Maximum</div>`
-    )
-    .style('visibility', 'visible');
-
-  // Cambia el color de las líneas del mismo año a su color original
-  svg.selectAll('.line-min, .line-max')
-    .filter(line => line.year === d.year)
-    .style('stroke', line => colorScale(line.year));
-  svg.selectAll('.circle-avg')
-    .filter(circle => circle.year === d.year)
-    .style('fill', circle => colorScale(circle.year));
-})
-.on('mousemove', function () {
-  tooltip
-    .style('top', d3.event.pageY - 10 + 'px')
-    .style('left', d3.event.pageX + 10 + 'px');
-})
-.on('mouseout', function () {
-  // Cambia el color de todos los círculos y líneas a sus colores originales
-  svg.selectAll('.circle-avg')
-    .style('fill', d => colorScale(d.year))
-    .style('fill-opacity', d => (d.type === 'Average' ? 0.6 : 1));
-  svg.selectAll('.line-min, .line-max')
-    .style('stroke', (d, i) => colorScale(d.year));
-
-  // Oculta el tooltip al salir de la línea
-  tooltip.html('').style('visibility', 'hidden');
-});
-
-    // Añade el legend de colores en la esquina superior derecha
-    const legend = svg.append('g')
-    .attr('transform', 'translate(' + (width - 100) + ', 0)');
-
-    // Crea un conjunto de datos único para el legend
-    const legendData = Array.from(new Set([...lineDataMin, ...lineDataMax].map(d => d.year)));
-
-    legend.selectAll('.legend-item')
-    .data(legendData)
-    .enter().append('rect')
-    .attr('class', 'legend-item')
-    .attr('x', 0)
-    .attr('y', (d, i) => i * 20)
-    .attr('width', 15)
-    .attr('height', 15)
-    .style('fill', d => colorScale(d)); // Asigna un color diferente a cada línea
-
-    legend.selectAll('.legend-text')
-    .data(legendData)
-    .enter().append('text')
-    .attr('class', 'legend-text')
-    .attr('x', 20)
-    .attr('y', (d, i) => i * 20 + 12)
-    .text(d => d); // Muestra los años en el legend
-
-    // Añade ejes x e y al gráfico
-    svg.append('g')
-      .attr('transform', 'translate(0,' + height + ')')
-      .call(d3.axisBottom(xScale));
-
-    svg.append('g')
-      .call(d3.axisLeft(yScale));
-
-    svg.append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', 0 - margin.left)
-      .attr('x', 0 - (height / 2))
-      .attr('dy', '1em')
-      .style('text-anchor', 'middle')
-      .text('°C');
-  });
+      group.append("text")
+        .attr("x", 20)
+        .attr("y", 12)
+        .text(d.label)
+        .style("font-size", "12px");
+    });
 }
 
-// Añade un evento de cambio al tag 'select'
-regionSelect.on('change', function () {
-  const selectedRegion = regionSelect.property('value');
-  generateLineChart(selectedRegion);
-});
+  // Initial chart rendering
+  updateChart();
 
-// Genera la gráfica inicial con la primera región en el tag 'select'
-generateLineChart("National");
+  // Event listener for RegionSelect, initialYear, and lastYear change
+  d3.selectAll("#RegionSelect, #initialYear, #lastYear").on("change", function () {
+    // Update selectedRegion, initialYear, and lastYear based on user selections
+    selectedRegion = d3.select("#RegionSelect").node().value;
+    initialYear = +d3.select("#initialYear").node().value;
+    lastYear = +d3.select("#lastYear").node().value;
+    // Update the chart with the new selections
+    updateChart();
+  });
+});
