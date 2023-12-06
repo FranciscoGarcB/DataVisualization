@@ -7,6 +7,7 @@ const tooltip = d3
 // Select the 'select' element with id 'RegionSelect'
 const regionSelect = d3.select('#RegionSelect');
 
+
 // Select the 'div' element with id 'my_dataviz'
 const myDataviz = d3.select('#my_dataviz');
 
@@ -47,9 +48,6 @@ function generateLineChart(selectedRegion) {
     const lineDataMin = processData(filteredDataMin);
     const lineDataMax = processData(filteredDataMax);
     const lineDataAvg = processData(filteredDataAvg);
-
-    // Combine Minimum and Maximum data to get the complete set of years
-    const uniqueYears = Array.from(new Set([...lineDataMin, ...lineDataMax].map(d => d.year)));
 
     // Set up the size and margins of the chart
     const margin = { top: 20, right: 30, bottom: 30, left: 50 };
@@ -109,13 +107,17 @@ function generateLineChart(selectedRegion) {
         .attr('d', d => line(d.values))
         .style('fill', 'none')
         .style('stroke', (d, i) => colorScale(d.year))
-        .style('stroke-opacity', d => (d.type === type ? 0.3 : 1))
-        .attr("stroke-width", 3)
+        .style('stroke-opacity', d => (d.type === type ? 1 : 1))
+        .attr("stroke-width", 4)
         .on("mouseover", function (d) {
           handleMouseOver(d, svg, colorScale, type);
         })
         .on('mousemove', handleMouseMove)
-        .on('mouseout', handleMouseOut);
+        .on('mouseout', handleMouseOut)
+        .style("opacity", 0)
+        .transition()
+        .duration(1000)
+        .style("opacity", 1);
     }
 
     function addCircles(svg, data, className, type, radius) {
@@ -136,7 +138,11 @@ function generateLineChart(selectedRegion) {
           handleMouseOver(d, svg, colorScale, type);
         })
         .on('mousemove', handleMouseMove)
-        .on('mouseout', handleMouseOut);
+        .on('mouseout', handleMouseOut)
+        .style("opacity", 0)
+        .transition()
+        .duration(1000)
+        .style("opacity", 1);
     }
 
     function addLegend(svg, width, lineDataMin, lineDataMax, colorScale) {
@@ -153,7 +159,11 @@ function generateLineChart(selectedRegion) {
         .attr('y', (d, i) => i * 20)
         .attr('width', 15)
         .attr('height', 15)
-        .style('fill', d => colorScale(d));
+        .style('fill', d => colorScale(d))
+        .style("opacity", 0)
+        .transition()
+        .duration(1000)
+        .style("opacity", 1);
 
       legend.selectAll('.legend-text')
         .data(legendData)
@@ -161,7 +171,11 @@ function generateLineChart(selectedRegion) {
         .attr('class', 'legend-text')
         .attr('x', 20)
         .attr('y', (d, i) => i * 20 + 12)
-        .text(d => d);
+        .text(d => d)
+        .style("opacity", 0)
+        .transition()
+        .duration(1000)
+        .style("opacity", 1);
 
       // Add click event to legend items
       legend.selectAll('.legend-item')

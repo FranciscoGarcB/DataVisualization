@@ -110,10 +110,11 @@ section > span {
   margin-top: 10px; /* Ajusta el margen según tus preferencias */
 }
 
-#my_dataviz, #stacked, #masterDiv, #heatmap-container {
+#my_dataviz, #stacked, #masterDiv, #heatmap-container, .chart-container {
   margin: 0 auto;
   text-align: center;
 }
+
 
 .tooltip {
   position: absolute;
@@ -129,3 +130,38 @@ section > span {
   stroke: #333;
   stroke-width: 2;
 }
+
+/* For the radar */
+.radar-chart .area {
+  fill-opacity: 0;
+  fill: none;
+  }
+
+  .radar-chart.focus .area {
+  fill-opacity: 0;
+  fill-opacity: 0;
+  fill: none;
+  }
+  .radar-chart.focus .area.focused {
+  fill-opacity: 0.9;
+  fill-opacity: 0;
+  fill: none;
+  }
+
+  .legend {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  }
+
+  .legend rect {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke-width: 2;
+  }
+
+  .legend text {
+  padding-left: 5px;
+  font-size: 12px;
+  }
