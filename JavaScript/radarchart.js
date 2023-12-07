@@ -2,7 +2,7 @@ RadarChart.defaultConfig.radius = 4;
 RadarChart.defaultConfig.factor = 0.9;
 RadarChart.defaultConfig.h = 500;
 RadarChart.defaultConfig.w = 500;
-RadarChart.defaultConfig.levels = 6;
+RadarChart.defaultConfig.levels = 7;
 document.addEventListener('DOMContentLoaded', function() {
   // Assume you have the options filled in the select tag
   var regionSelect = document.getElementById('RegionSelect');

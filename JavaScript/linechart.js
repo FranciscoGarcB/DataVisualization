@@ -69,7 +69,8 @@ function generateLineChart(selectedRegion) {
       .y(d => yScale(d.value));
 
     // Set up the color scale
-    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+    const colorScale = d3.scaleOrdinal()
+                        .range(["#6e40aa","#9b3db3","#c83dac","#ee4395","#ff5375","#ff6b53","#ff8c38","#e8b02e","#c9d33a","#aff05b"]);
 
     // Create the SVG container for the chart
     const svg = myDataviz.append('svg')
@@ -207,14 +208,20 @@ function generateLineChart(selectedRegion) {
         .style('fill', '#E9E9E9');
       svg.selectAll('.line-min, .line-max')
         .style('stroke', '#E9E9E9');
-
-      // Show tooltip information for the current data point
-      tooltip
+        if (type=="Average") {
+          tooltip
+        .html(
+          `<div>Year: ${d.year}</div>
+          <div>Type: ${type}</div>
+          <div>Value: ${d.value} °C</div>`
+        ).style('visibility', 'visible');
+        } else {
+          tooltip
         .html(
           `<div>Year: ${d.year}</div>
           <div>Type: ${type}</div>`
-        )
-        .style('visibility', 'visible');
+        ).style('visibility', 'visible');
+        }
 
       // Change the color of lines and circles of the same year to their original color
       svg.selectAll('.line-min, .line-max')
