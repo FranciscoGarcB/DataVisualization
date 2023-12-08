@@ -55,6 +55,15 @@
     </div>
     <br>
 
+    <p>
+      I used a public d3.js implementation of spiderchart 
+      <a href="https://github.com/alangrafu/radar-chart-d3">(repo)</a> and here there is also the 
+      region filter. You can hover over any circle of data to see the actual temperature (in °C).
+      It's particular to see that all the regions follow a "pattern" or "trend"that gives the lines
+      a "heart" shape. This explains that the temperatures (on average) in January tend to be 
+      the lowest on January and then starts to ascend.
+    </p>
+
     <!-- Actual content -->
     <!-- Populate select tags with script -->
     <label for="RegionSelect">Region:</label>
@@ -62,5 +71,6 @@
     <script src="../JavaScript/generalScripts/createRegionTag.js"></script>
 
     <!-- Viz space -->
+    <h4>Temperatures by month</h4> <br> 
     <div class="chart-container"></div>
     <script src="../JavaScript/radarchart.js"> </script>

@@ -55,17 +55,26 @@
     <br>
 
     <p>
-      
+      For the line chart I decided to add a region dropdown list so it's possible to see how the temperatures vary in different regions of the country. <br> <br>
+      Three principal groups of lines/circles can be seen. The bottom lines are for the minimum temperatures, while the top lines are for the maximum. The circles represent
+      the average temperatures. <br>
+      The color palette is given by a year, that way it is possible to identify the bottom and top lines of the
+      same year, as well as the average points. <br> <br>
+      You can hover over any line/circle to see evolution of the minimum, maximum and average temperatures of that year independently.
+      Also, you can click on the rectangles of the legend to compare different years, which is very useful, since this way
+      we can see that the 2022 year is (generally) hotter than the others in almost every point.
     </p>
     
     <!-- Actual content -->
     <!-- Populate select tags with script -->
     <label for="RegionSelect">Region:</label>
-    <select id="RegionSelect"></select> 
+    <select id="RegionSelect"></select> <br>
     <script src="../JavaScript/generalScripts/createRegionTag.js"></script>
-    
-    <!-- Add the back icon -->
-    <a href="LineChart2.html" onclick="goBack()" style="position: absolute; top: 280px; right: 20px; font-size: 20px;"> Small Multiples</a>
+    <a href="LineChart2.html" style="position: relative; top: 30px; right: 0px;
+     font-size: 15px; display: inline-block; padding: 10px; background-color: #04AA6D; 
+     color: #fff; text-decoration: none; border-radius: 5px;">Small Multiples</a>
+
+
 
     <!-- Viz space -->
     <h4>Temperatures by month</h4> <br> 

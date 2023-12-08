@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .attr("width", 100)
         .attr("height", uniqueYears.length * 20)
         .style("position", "absolute")
-        .style("top", "300px")
+        .style("top", "400px")
         .style("right", "10px")
         .selectAll("g")
         .data(uniqueYears)
