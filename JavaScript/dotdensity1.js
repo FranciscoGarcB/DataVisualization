@@ -46,8 +46,8 @@ fetch('../datasets/dot-density.csv')
           data: geojson
         },
         paint: {
-          'circle-radius': 3,
-          'circle-color': '#FF0000'
+          'circle-radius': 3.2,
+          'circle-color': '#04AA6D'
         }
       });
     });
