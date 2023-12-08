@@ -1,5 +1,5 @@
 // Reemplaza 'TU_TOKEN_MAPBOX' con tu token de Mapbox
-mapboxgl.accessToken = api_Key;
+mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbmNpc2NvZ2FyY2IiLCJhIjoiY2xweDN5ZXMwMGxoNDJxbzl4ZTg4Mjg4aiJ9.zmi1_1GQonBXdbnESnCy6g';
 
 // Inicializamos el mapa en una ubicación específica (coordenadas del centro de Estados Unidos)
 var map = new mapboxgl.Map({
@@ -46,7 +46,7 @@ fetch('../datasets/dot-density.csv')
           data: geojson
         },
         paint: {
-          'circle-radius': 3.2,
+          'circle-radius': 3,
           'circle-color': '#04AA6D'
         }
       });
