@@ -22,25 +22,16 @@
   <h1> DATA VISUALIZATION: 5M TREES DATASET ANALYSIS </h1>
   <h2> Francisco García Barrada</h2> <hr>
   <!-- Navigation bar -->
+  <script src="../JavaScript/generalScripts/navBar.js"></script>
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="../index.html">1st Assignment</a>
     <a href="Alluvial.html">2nd Assignment</a>
     <a href="LineChart.html">3rd Assignment</a>
-    <a href="Map.html">4th Assignment</a>
+    <a href="DotDensityMap.html">4th Assignment</a>
   </div>
-  <script>
-  function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-  }
 
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-  }
-  </script>
-
-
-<section>
+  <section>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
     <h3> Section 3: Distributions and Timelines</h3>
     <div class="topnav">
@@ -60,7 +51,6 @@
       the preprocessing of the data is quite intensive due to the initial shape of the data retrieved. <br>
       Basically, I appended all temperatures of each month and a year (one dataset per region). You can see the complete process
       on <a href="https://github.com/FranciscoGarcB/DataVisualization/blob/main/Python/Ridgeline.ipynb">this Jupyter Notebook</a>
-      
     </p>
 
     <!-- Viz space -->

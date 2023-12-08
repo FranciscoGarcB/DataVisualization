@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa de Coordenadas con Mapbox GL JS</title>
+  <!-- Incluimos Mapbox GL JS -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+  <!-- Incluimos la biblioteca PapaParse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <!-- Incluimos la biblioteca Turf.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.3.0/turf.min.js"></script>
+
+  <!-- Ajusta el tamaño del mapa -->
+  <style>
+    body { margin: 0; padding: 0; }
+    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+  </style>
+</head>
+<body>
+
+<!-- Crea un contenedor para el mapa -->
+<div id="map"></div>
+
+<script>
+  // Reemplaza 'TU_TOKEN_MAPBOX' con tu token de Mapbox
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbmNpc2NvZ2FyY2IiLCJhIjoiY2xweDN5ZXMwMGxoNDJxbzl4ZTg4Mjg4aiJ9.zmi1_1GQonBXdbnESnCy6g';
+
+  // Inicializamos el mapa en una ubicación específica (coordenadas del centro de Estados Unidos)
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-98.5795, 39.8283],
+    zoom: 4
+  });
+
+  // Cargamos los datos desde el archivo CSV
+  fetch('../datasets/dot-density.csv')
+    .then(response => response.text())
+    .then(csvData => {
+      // Parseamos el CSV
+      var points = Papa.parse(csvData, { header: true }).data;
+
+      // Convertimos los puntos a GeoJSON
+      var geojson = {
+        type: 'FeatureCollection',
+        features: points.map(point => {
+          var latitude = parseFloat(point.latitude_coordinate);
+          var longitude = parseFloat(point.longitude_coordinate);
+
+          if (!isNaN(latitude) && !isNaN(longitude)) {
+            return {
+              type: 'Feature',
+              properties: {},
+              geometry: {
+                type: 'Point',
+                coordinates: [longitude, latitude]
+              }
+            };
+          }
+        }).filter(Boolean) // Eliminamos elementos nulos
+      };
+
+      // Añadimos los datos al mapa
+      map.on('load', function() {
+        map.addLayer({
+          id: 'points',
+          type: 'circle',
+          source: {
+            type: 'geojson',
+            data: geojson
+          },
+          paint: {
+            'circle-radius': 3,
+            'circle-color': '#FF0000'
+          }
+        });
+      });
+    });
+</script>
+
+</body>
+</html>
