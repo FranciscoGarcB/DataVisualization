@@ -36,7 +36,6 @@ var map = new mapboxgl.Map({
         }).filter(Boolean) // Eliminamos elementos nulos
       };
 
-<<<<<<< HEAD
     // Añadimos los datos al mapa
     map.on('load', function() {
       map.addLayer({
@@ -50,21 +49,5 @@ var map = new mapboxgl.Map({
           'circle-radius': 3,
           'circle-color': '#04AA6D'
         }
-=======
-      // Añadimos los datos al mapa
-      map.on('load', function() {
-        map.addLayer({
-          id: 'points',
-          type: 'circle',
-          source: {
-            type: 'geojson',
-            data: geojson
-          },
-          paint: {
-            'circle-radius': 3,
-            'circle-color': '#FF0000'
-          }
-        });
->>>>>>> parent of ab86a1f (Added gitignore)
       });
     });
