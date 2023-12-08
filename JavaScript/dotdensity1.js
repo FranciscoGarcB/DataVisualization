@@ -1,12 +1,12 @@
 // Reemplaza 'TU_TOKEN_MAPBOX' con tu token de Mapbox
-mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbmNpc2NvZ2FyY2IiLCJhIjoiY2xweDN5ZXMwMGxoNDJxbzl4ZTg4Mjg4aiJ9.zmi1_1GQonBXdbnESnCy6g';
+mapboxgl.accessToken = api_Key;
 
 // Inicializamos el mapa en una ubicación específica (coordenadas del centro de Estados Unidos)
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
+  style: 'mapbox://styles/mapbox/navigation-day-v1',
   center: [-98.5795, 39.8283],
-  zoom: 4
+  zoom: 3
 });
 
 // Cargamos los datos desde el archivo CSV
