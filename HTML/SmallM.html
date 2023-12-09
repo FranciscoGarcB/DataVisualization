@@ -3,6 +3,7 @@
 
 <head>
   <title>S1: Small Multiples</title>
+  <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../Images/favicon-16x16.png">
@@ -12,23 +13,24 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="msapplication-config" content="../Images/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
-  <meta charset="UTF-8">
+  
+  
+  <script crossorigin="anonymous" src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+      .bar {
+          fill: #79AC78;
+      }
+      .chart {
+          float: left;
+          margin-right: 20px;
+      }
+      .value-label {
+          font-size: 12px;
+          fill: #333; /* Cambia el color del texto si es necesario */
+          text-anchor: start; /* Ajusta la alineación del texto */
+      }
+  </style>
   <link rel="stylesheet", href="../CSS/style.css">
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <style>
-        .bar {
-            fill: #79AC78;
-        }
-        .chart {
-            float: left;
-            margin-right: 20px;
-        }
-        .value-label {
-            font-size: 12px;
-            fill: #333; /* Cambia el color del texto si es necesario */
-            text-anchor: start; /* Ajusta la alineación del texto */
-        }
-    </style>
 </head>
 
 
