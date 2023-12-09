@@ -1,84 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <title>S4: Dot Density Maps</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapa de Coordenadas con Mapbox GL JS</title>
-  <!-- Incluimos Mapbox GL JS -->
-  <script crossorigin="anonymous" src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
-  <link crossorigin="anonymous" href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
-  <!-- Incluimos la biblioteca PapaParse -->
-  <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-  <!-- Incluimos la biblioteca Turf.js -->
-  <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.3.0/turf.min.js"></script>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../Images/favicon-16x16.png">
+  <link rel="manifest" href="../Images/site.webmanifest">
+  <link rel="mask-icon" href="../Images/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../Images/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="../Images/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff"> -->
 
-  <!-- Ajusta el tamaño del mapa -->
-  <style>
-    body { margin: 0; padding: 0; }
-    #map { position: absolute; top: 0; bottom: 0; width: 100%; }
-  </style>
+  <!-- Frameworks -->
+  <<link crossorigin="anonymous" rel="stylesheet" href="dist/css/jsvectormap.min.css" />
+  <script crossorigin="anonymous" src="dist/js/jsvectormap.min.js"></script>
+  <script crossorigin="anonymous" src="dist/maps/world.js"></script>
+
+  <link rel="stylesheet" href="../CSS/style.css">
 </head>
+
 <body>
+  <h1> DATA VISUALIZATION: 5M TREES DATASET ANALYSIS </h1>
+  <h2> Francisco García Barrada</h2> <hr>
+  <!-- Navigation bar -->
+  <script src="../JavaScript/generalScripts/navBar.js"></script>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="../index.html">1st Assignment</a>
+    <a href="Alluvial.html">2nd Assignment</a>
+    <a href="LineChart.html">3rd Assignment</a>
+    <a href="DotDensityMap.html">4th Assignment</a>
+  </div>
 
-<!-- Crea un contenedor para el mapa -->
-<div id="map"></div>
+  <section>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <h3> Section 4: Maps </h3>
+    <div class="topnav">
+      <a class="active" href="DotDensityMap.html">Dot Density</a>
+      <a href="ChoroplethMap.html">Choropleth</a>
+    </div>
+    <br>
 
-<script>
-  // Reemplaza 'TU_TOKEN_MAPBOX' con tu token de Mapbox
-  mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbmNpc2NvZ2FyY2IiLCJhIjoiY2xweDN5ZXMwMGxoNDJxbzl4ZTg4Mjg4aiJ9.zmi1_1GQonBXdbnESnCy6g';
+    <p>
+      
+    </p>
 
-  // Inicializamos el mapa en una ubicación específica (coordenadas del centro de Estados Unidos)
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-98.5795, 39.8283],
-    zoom: 4
-  });
-
-  // Cargamos los datos desde el archivo CSV
-  fetch('../datasets/dot-density.csv')
-    .then(response => response.text())
-    .then(csvData => {
-      // Parseamos el CSV
-      var points = Papa.parse(csvData, { header: true }).data;
-
-      // Convertimos los puntos a GeoJSON
-      var geojson = {
-        type: 'FeatureCollection',
-        features: points.map(point => {
-          var latitude = parseFloat(point.latitude_coordinate);
-          var longitude = parseFloat(point.longitude_coordinate);
-
-          if (!isNaN(latitude) && !isNaN(longitude)) {
-            return {
-              type: 'Feature',
-              properties: {},
-              geometry: {
-                type: 'Point',
-                coordinates: [longitude, latitude]
-              }
-            };
-          }
-        }).filter(Boolean) // Eliminamos elementos nulos
-      };
-
-      // Añadimos los datos al mapa
-      map.on('load', function() {
-        map.addLayer({
-          id: 'points',
-          type: 'circle',
-          source: {
-            type: 'geojson',
-            data: geojson
-          },
-          paint: {
-            'circle-radius': 3,
-            'circle-color': '#FF0000'
-          }
-        });
+    <h4> All trees in the United States</h4>
+    <div id="map" style="width: 600px; height: 350px"></div>
+    <script>
+      var map = new jsVectorMap({
+        selector: "#map",
+        map: "world",
       });
-    });
-</script>
+    </script>
 
+
+  </section>
 </body>
+
 </html>

@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- <head>
-<title>S4: Dot Density Maps</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../Images/favicon-16x16.png">
-  <link rel="manifest" href="../Images/site.webmanifest">
-  <link rel="mask-icon" href="../Images/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="../Images/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="../Images/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" href="../CSS/style.css">
-</head> -->
-
 <head>
   <title>S4: Dot Density Maps</title>
   <meta charset="UTF-8">
@@ -34,9 +20,10 @@
   <link crossorigin="anonymous" href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet'/>
   <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
   <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.3.0/turf.min.js"></script>
+  <script crossorigin="anonymous" src="https://d3js.org/d3.v4.js"></script>
   <!-- Map style -->
   <style>
-    #map {position: absolute; top: 500; bottom: 0; width: 100%; height: 300px;}
+    #map {top: 0; bottom: 0; width: 100%; height: 500px;}
   </style>
   <link rel="stylesheet" href="../CSS/style.css">
 </head>
@@ -63,8 +50,22 @@
     </div>
     <br>
 
+    <p>
+      After trying many maps implementations (like d3.js) I decided to use MapBoxGL public API, since
+      it is the one with the best performance, considering the scale of our dataset. Also, it provides a simple way
+      to cluster points, which in this case is a very useful feature, because we're plotting a lot of points and 
+      this way we can visualize the distribution of the trees around the country.
+      Even that, I couldn't find any reliable way of plotting every tree on the dataset (there are only 4,000,000 included in this map). 
+      Take on consideration that the points take some seconds to load on the map.
+    </p>
+
+    <a href="DotDensityMap2.html" style="position: absolute; top: 340px; right: 30px;
+     font-size: 20px; display: inline-block; padding: 10px; background-color: #04AA6D; 
+     color: #fff; text-decoration: none; border-radius: 5px;">Top 10</a>
+    <h4> All trees in United States</h4>
     <div id="map"></div>
     <script src="../JavaScript/dotdensity1.js"></script>
+
 
   </section>
 </body>

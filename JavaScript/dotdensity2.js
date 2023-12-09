@@ -1,19 +1,20 @@
-const svg = d3.select("#my_dataviz")
+const svg = d3.select("#map")
     .append("svg")
     .attr("width", 800)
-    .attr("height", 600);
+    .attr("height", 800);
 
-// Define a projection (e.g., Albers USA)
 const projection = d3.geoAlbersUsa()
     .scale(1000)
     .translate([400, 300]);
 
-// Create a path generator
 const path = d3.geoPath().projection(projection);
 
-// Load US map data (you need to have a GeoJSON file)
+// Definir una escala de colores ordinal
+const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+// Load US map data
 d3.json("../datasets/us-states.json", function (us) {
-    // Draw the states
+    // Dibujar los estados
     svg.selectAll("path")
         .data(us.features)
         .enter().append("path")
@@ -22,21 +23,25 @@ d3.json("../datasets/us-states.json", function (us) {
         .attr("stroke-width", 1)
         .attr("fill", "white");
 
-    // Load data from the CSV file
-    d3.csv("../datasets/dot-density.csv", function (data) {
-        // Agregar puntos al mapa
+    // Load GeoJSON data
+    d3.json("../datasets/dot-density2.geojson", function (geojson) {
+        // Dibujar puntos con colores según 'common_name'
         svg.selectAll("circle")
-            .data(data)
+            .data(geojson.features)
             .enter().append("circle")
             .attr("cx", function (d) {
-                return projection([+d.longitude_coordinate, +d.latitude_coordinate])[0];
+                const coordinates = d.geometry.coordinates;
+                return projection([coordinates[0], coordinates[1]])[0];
             })
             .attr("cy", function (d) {
-                return projection([+d.longitude_coordinate, +d.latitude_coordinate])[1];
+                const coordinates = d.geometry.coordinates;
+                return projection([coordinates[0], coordinates[1]])[1];
             })
-            .attr("r", 1)
-            .attr("fill", "#04AA6D")
-
-
+            .attr("r", 0.1)
+            .attr("fill", function (d) {
+                // Asignar color según 'common_name'
+                return colorScale(d.properties.name);
+            })
+            .attr("opacity", 0.7);
     });
 });

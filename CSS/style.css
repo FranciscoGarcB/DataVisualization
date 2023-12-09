@@ -110,7 +110,7 @@ section > span {
   margin-top: 10px; /* Ajusta el margen según tus preferencias */
 }
 
-#my_dataviz, #stacked, #masterDiv, #heatmap-container, .chart-container {
+#my_dataviz, #stacked, #masterDiv, #heatmap-container, .chart-container, #map {
   margin: 0 auto;
   text-align: center;
 }
