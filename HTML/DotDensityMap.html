@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>S4: Dot Density Maps</title>
+<!-- <head>
+<title>S4: Dot Density Maps</title>
   <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../Images/favicon-16x16.png">
@@ -14,10 +14,25 @@
   <meta name="theme-color" content="#ffffff">
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../CSS/style.css">
+</head> -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S4: Dot Density Maps</title>
+  <!-- Incluimos Mapbox GL JS -->
+  <script crossorigin="anonymous" src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+  <link crossorigin="anonymous" href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+  <!-- Incluimos la biblioteca PapaParse -->
+  <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <!-- Incluimos la biblioteca Turf.js -->
+  <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.3.0/turf.min.js"></script>
+
+  <!-- Ajusta el tamaño del mapa -->
   <style>
-    #map {height: 350px; width: 100%; }
+    #map {position: absolute; top: 500; bottom: 0; width: 100%; height: 300px;}
   </style>
-  <script src="https://d3js.org/d3.v4.js"></script>
+  <link rel="stylesheet" href="../CSS/style.css">
 </head>
 
 <body>
@@ -42,7 +57,7 @@
     </div>
     <br>
 
-    <div id="my_dataviz"></div>
+    <div id="map"></div>
     <script src="../JavaScript/dotdensity1.js"></script>
 
   </section>
