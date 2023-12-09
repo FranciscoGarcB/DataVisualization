@@ -4,12 +4,12 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbmNpc2NvZ2FyY2IiLCJhIjoiY2xweDN5ZXMwMGxoN
 // Inicializamos el mapa en una ubicación específica (coordenadas del centro de Estados Unidos)
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
+  style: 'mapbox://styles/mapbox/navigation-day-v1',
   center: [-98.5795, 39.8283],
   zoom: 3
 });
 
-/* // Cargamos los datos desde el archivo CSV
+// Cargamos los datos desde el archivo CSV
 fetch('../datasets/dot-density.csv')
   .then(response => response.text())
   .then(csvData => {
@@ -47,8 +47,8 @@ fetch('../datasets/dot-density.csv')
         },
         paint: {
           'circle-radius': 3,
-          'circle-color': '#FF0000'
+          'circle-color': '#04AA6D'
         }
       });
     });
-  }); */
+  });

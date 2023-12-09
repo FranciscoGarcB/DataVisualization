@@ -12,23 +12,30 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="msapplication-config" content="../Images/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
-  <meta charset="UTF-8">
   <link rel="stylesheet" href="../CSS/style.css">
 </head> -->
 
 <head>
+  <title>S4: Dot Density Maps</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S4: Dot Density Maps</title>
-  <!-- Incluimos Mapbox GL JS -->
-  <script crossorigin="anonymous" src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
-  <link crossorigin="anonymous" href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
-  <!-- Incluimos la biblioteca PapaParse -->
-  <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-  <!-- Incluimos la biblioteca Turf.js -->
-  <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.3.0/turf.min.js"></script>
 
-  <!-- Ajusta el tamaño del mapa -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../Images/favicon-16x16.png">
+  <link rel="manifest" href="../Images/site.webmanifest">
+  <link rel="mask-icon" href="../Images/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="../Images/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="../Images/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Frameworks -->
+  <script crossorigin="anonymous" src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+  <link crossorigin="anonymous" href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet'/>
+  <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.3.0/turf.min.js"></script>
+  <!-- Map style -->
   <style>
     #map {position: absolute; top: 500; bottom: 0; width: 100%; height: 300px;}
   </style>
