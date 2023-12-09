@@ -51,3 +51,4 @@ var map = new mapboxgl.Map({
         }
       });
     });
+  })
