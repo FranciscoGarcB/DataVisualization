@@ -5,10 +5,7 @@ var height = 600;
 var svg = d3.select('#map')
   .append('svg')
   .attr('width', width)
-  .attr('height', height)
-  .call(d3.zoom().on("zoom", function () {
-    svg.attr("transform", d3.event.transform)
- }));
+  .attr('height', height);
 
 // Load the US states GeoJSON
 d3.json('../datasets/us-states.json').then(function(us) {
