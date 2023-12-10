@@ -1,78 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canvas Dot Density Map</title>
-  <style>
-    canvas {
-      border: 1px solid #000;
-    }
-  </style>
-  <script crossorigin="anonymous" src="https://d3js.org/d3.v5.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choropleth Map with Legend</title>
+    <script crossorigin="anonymous" src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
 
-<canvas id="mapCanvas"></canvas>
-
 <script>
-  var width = 800;
-  var height = 600;
+    // Paths to GeoJSON and CSV files
+    const geojsonPath = "../datasets/us-states.json";
+    const csvPath = "../datasets/abundance_states.csv";
 
-  var canvas = d3.select('body')
-    .append('canvas')
-    .attr('id', 'mapCanvas')
-    .attr('width', width)
-    .attr('height', height);
+    // Set up the SVG canvas
+    const svg = d3.select("body")
+        .append("svg")
+        .attr("width", 800)
+        .attr("height", 600);
 
-  var context = canvas.node().getContext('2d');
+    // Load GeoJSON data and CSV data
+    Promise.all([d3.json(geojsonPath), d3.csv(csvPath)]).then(function (data) {
+        const geojson = data[0];
+        const csvData = data[1];
 
-  // Create a color scale for common_name values
-  var colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+        // Create a map to store abundance values for each state
+        const abundanceMap = new Map();
+        csvData.forEach(d => {
+            abundanceMap.set(d.state, +d.abundance);
+        });
 
-  // Create projection for the map
-  var projection = d3.geoAlbersUsa()
-    .translate([width / 2, height / 2])
-    .scale(1000);
+        // Define a color scale (green and white)
+        const colorScale = d3.scaleSequential(d3.interpolateGreens)
+            .domain([0, d3.max(csvData, d => +d.abundance)]);
 
-  // Load the US states GeoJSON
-  d3.json('../datasets/us-states.json').then(function(us) {
-    // Draw state boundaries
-    us.features.forEach(function(feature) {
-      context.beginPath();
-      path(feature);
-      context.fillStyle = 'white';
-      context.strokeStyle = 'lightgray';
-      context.fill();
-      context.stroke();
+        // Define a projection
+        const projection = d3.geoAlbersUsa().fitSize([800, 600], geojson);
+
+        // Create a path generator
+        const path = d3.geoPath().projection(projection);
+
+        // Add a tooltip element
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0)
+            .style("position", "absolute")  // Set position to absolute
+            .style("background-color", "lightsteelblue")
+            .style("border", "0px")
+            .style("border-radius", "8px")
+            .style("padding", "2px")
+            .style("font", "12px sans-serif")
+            .style("pointer-events", "none");
+
+        // Draw the choropleth map without transition initially
+        svg.selectAll("path")
+            .data(geojson.features)
+            .enter().append("path")
+            .attr("d", path)
+            .attr("stroke", "#333")
+            .attr("fill", d => {
+                const value = abundanceMap.get(d.properties.NAME) || 0;
+                return value === 0 ? "white" : colorScale(value);
+            })
+            .on("mouseover", function (d) {
+                // Show tooltip on mouseover
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html(`${d.properties.NAME}: ${abundanceMap.get(d.properties.NAME) || 0}`)
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function () {
+                // Hide tooltip on mouseout
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
+            .transition() // Add a transition after initial drawing
+            .duration(1000) // Transition duration (1 second)
+            .attr("fill", d => {
+                const value = abundanceMap.get(d.properties.NAME) || 0;
+                return value === 0 ? "white" : colorScale(value);
+            });
+
+        // Add a legend
+        const legend = svg.append("g")
+            .attr("transform", "translate(20,20)");
+
+        const legendScale = d3.scaleLinear()
+            .domain([0, d3.max(csvData, d => +d.abundance)])
+            .range([0, 200]);
+
+        const legendAxis = d3.axisRight(legendScale);
+
+        legend.append("g")
+            .attr("class", "legend")
+            .call(legendAxis);
     });
-
-    // Load the CSV data and draw dots
-    d3.csv('../datasets/dot-density2.csv').then(function(data) {
-      data.forEach(function(d) {
-        var coordinates = projection([+d.longitude_coordinate, +d.latitude_coordinate]);
-        context.beginPath();
-        context.arc(coordinates[0], coordinates[1], 1.5, 0, 2 * Math.PI);
-        context.fillStyle = colorScale(d.common_name);
-        context.fill();
-      });
-
-      // Add legend
-      var legend = d3.select('body').append('div').attr('class', 'legend');
-      var keys = colorScale.domain();
-
-      keys.forEach(function(key) {
-        legend.append('span')
-          .style('background-color', colorScale(key))
-          .html(key);
-      });
-    });
-  });
-
-  function path(feature) {
-    context.beginPath();
-    d3.geoPath().projection(projection).context(context)(feature);
-  }
 </script>
 
 </body>
