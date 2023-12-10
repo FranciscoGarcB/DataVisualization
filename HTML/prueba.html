@@ -1,65 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>S4: Dot Density Maps</title>
   <meta charset="UTF-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../Images/favicon-16x16.png">
-  <link rel="manifest" href="../Images/site.webmanifest">
-  <link rel="mask-icon" href="../Images/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="../Images/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="../Images/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff"> -->
-
-  <!-- Frameworks -->
-  <<link crossorigin="anonymous" rel="stylesheet" href="dist/css/jsvectormap.min.css" />
-  <script crossorigin="anonymous" src="dist/js/jsvectormap.min.js"></script>
-  <script crossorigin="anonymous" src="dist/maps/world.js"></script>
-
-  <link rel="stylesheet" href="../CSS/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Dot Density Map</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+  <script crossorigin="anonymous" src="https://d3js.org/d3.v5.min.js"></script>
 </head>
-
 <body>
-  <h1> DATA VISUALIZATION: 5M TREES DATASET ANALYSIS </h1>
-  <h2> Francisco García Barrada</h2> <hr>
-  <!-- Navigation bar -->
-  <script src="../JavaScript/generalScripts/navBar.js"></script>
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="../index.html">1st Assignment</a>
-    <a href="Alluvial.html">2nd Assignment</a>
-    <a href="LineChart.html">3rd Assignment</a>
-    <a href="DotDensityMap.html">4th Assignment</a>
-  </div>
 
-  <section>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-    <h3> Section 4: Maps </h3>
-    <div class="topnav">
-      <a class="active" href="DotDensityMap.html">Dot Density</a>
-      <a href="ChoroplethMap.html">Choropleth</a>
-    </div>
-    <br>
+<canvas id="mapCanvas"></canvas>
 
-    <p>
-      
-    </p>
+<script>
+  var width = 800;
+  var height = 600;
 
-    <h4> All trees in the United States</h4>
-    <div id="map" style="width: 600px; height: 350px"></div>
-    <script>
-      var map = new jsVectorMap({
-        selector: "#map",
-        map: "world",
+  var canvas = d3.select('body')
+    .append('canvas')
+    .attr('id', 'mapCanvas')
+    .attr('width', width)
+    .attr('height', height);
+
+  var context = canvas.node().getContext('2d');
+
+  // Create a color scale for common_name values
+  var colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+
+  // Create projection for the map
+  var projection = d3.geoAlbersUsa()
+    .translate([width / 2, height / 2])
+    .scale(1000);
+
+  // Load the US states GeoJSON
+  d3.json('../datasets/us-states.json').then(function(us) {
+    // Draw state boundaries
+    us.features.forEach(function(feature) {
+      context.beginPath();
+      path(feature);
+      context.fillStyle = 'white';
+      context.strokeStyle = 'lightgray';
+      context.fill();
+      context.stroke();
+    });
+
+    // Load the CSV data and draw dots
+    d3.csv('../datasets/dot-density2.csv').then(function(data) {
+      data.forEach(function(d) {
+        var coordinates = projection([+d.longitude_coordinate, +d.latitude_coordinate]);
+        context.beginPath();
+        context.arc(coordinates[0], coordinates[1], 1.5, 0, 2 * Math.PI);
+        context.fillStyle = colorScale(d.common_name);
+        context.fill();
       });
-    </script>
 
+      // Add legend
+      var legend = d3.select('body').append('div').attr('class', 'legend');
+      var keys = colorScale.domain();
 
-  </section>
+      keys.forEach(function(key) {
+        legend.append('span')
+          .style('background-color', colorScale(key))
+          .html(key);
+      });
+    });
+  });
+
+  function path(feature) {
+    context.beginPath();
+    d3.geoPath().projection(projection).context(context)(feature);
+  }
+</script>
+
 </body>
-
 </html>
