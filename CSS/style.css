@@ -32,7 +32,8 @@ h4, h3 {
 .topnav {
   background-color: #333;
   overflow: hidden;
-  text-align: center; /* Center the links horizontally */
+  text-align: center; 
+  margin-top: 10px;
 }
 
 /* Style for links inside the navigation bar */
