@@ -20,6 +20,7 @@
   <link crossorigin="anonymous" href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet'/>
   <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
   <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.3.0/turf.min.js"></script>
+  <script crossorigin="anonymous" src="https://unpkg.com/supercluster"></script>
   <script crossorigin="anonymous" src="https://d3js.org/d3.v4.js"></script>
   <!-- Map style -->
   <style>
@@ -55,8 +56,10 @@
       it is the one with the best performance, considering the scale of our dataset. Also, it provides a simple way
       to cluster points, which in this case is a very useful feature, because we're plotting a lot of points and 
       this way we can visualize the distribution of the trees around the country.
-      Even that, I couldn't find any reliable way of plotting every tree on the dataset (there are only 4,000,000 included in this map). 
-      Take on consideration that the points take some seconds to load on the map.
+      Even that, I couldn't find any reliable way of plotting every tree on the dataset (there are only 3,000,000 included in this map). <br>
+      It is important to mention that all the points could have been displayed, but by fetching the data as a GeoJSON file, but this was
+      not possible due the limitations of file sizes of GitHub pages.
+      Take on consideration that the points take some seconds to load on the map. 
     </p>
 
     <a href="DotDensityMap2.html" style="position: absolute; top: 340px; right: 30px;
@@ -65,7 +68,6 @@
     <h4> All trees in United States</h4>
     <div id="map"></div>
     <script src="../JavaScript/dotdensity1.js"></script>
-
 
   </section>
 </body>
