@@ -1,37 +1,41 @@
+/* Define custom fonts */
 @font-face {
-    font-family: Custom-RobotoSlab; /* Name for the font*/
-    src: url(RobotoSlab.ttf); /* File */
+  font-family: Custom-RobotoSlab; /* Font name */
+  src: url(RobotoSlab.ttf); /* Font file */
 }
 
 @font-face {
-    font-family: Custom-FireSans; /* Name for the font*/
-    src: url(FireSans.ttf); /* File */
+  font-family: Custom-FireSans; /* Font name */
+  src: url(FireSans.ttf); /* Font file */
 }
 
+/* Apply custom fonts to specified elements */
 title, h1, h2, h3, h4 {
-    font-family: Custom-RobotoSlab;
+  font-family: Custom-RobotoSlab;
 }
 
 p {
-    font-family: Custom-FireSans;
-    font-size: small;
+  font-family: Custom-FireSans;
+  font-size: small;
 }
 
-a{
+a {
   text-decoration: none;
   color: #04AA6D;
 }
 
-h4,h3 {text-align: center;}
+h4, h3 {
+  text-align: center;
+}
 
-/* Add a black background color to the top navigation */
+/* Style for the top navigation bar */
 .topnav {
   background-color: #333;
   overflow: hidden;
   text-align: center; /* Center the links horizontally */
 }
 
-/* Style the links inside the navigation bar */
+/* Style for links inside the navigation bar */
 .topnav a {
   display: inline-block; /* Display links in a row */
   color: #f2f2f2;
@@ -41,18 +45,19 @@ h4,h3 {text-align: center;}
   font-size: 17px;
 }
 
-/* Change the color of links on hover */
+/* Change link color on hover */
 .topnav a:hover {
   background-color: #ddd;
   color: black;
 }
 
-/* Add a color to the active/current link */
+/* Add color to the active/current link */
 .topnav a.active {
   background-color: #04AA6D;
   color: white;
 }
 
+/* Styling for the side navigation menu */
 .sidenav {
   height: 100%;
   width: 0;
@@ -66,15 +71,23 @@ h4,h3 {text-align: center;}
   padding-top: 60px;
 }
 
-/* Agrega estilo para el ícono del menú */
+.header-container {
+  display: flex;
+  align-items: center;
+}
+
+h3 {
+  margin: 0;
+  flex: 1;
+}
+
+/* Style for the menu icon */
 section > span {
-  position: absolute;
-  top: 145px; /* Ajusta la posición vertical según tu preferencia */
-  left: 10px; /* Ajusta la posición horizontal según tu preferencia */
+  top: 145px; /* Adjust vertical position as preferred */
+  left: 10px; /* Adjust horizontal position as preferred */
   font-size: 30px;
   cursor: pointer;
 }
-
 
 .sidenav a {
   padding: 8px 8px 8px 32px;
@@ -98,16 +111,17 @@ section > span {
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav { padding-top: 15px; }
+  .sidenav a { font-size: 18px; }
 }
 
+/* Styling for specific elements by ID */
 #selectContainer {
   text-align: right;
 }
 
 #selectButton {
-  margin-top: 10px; /* Ajusta el margen según tus preferencias */
+  margin-top: 10px; /* Adjust margin as preferred */
 }
 
 #my_dataviz, #stacked, #masterDiv, #heatmap-container, .chart-container, #map {
@@ -115,7 +129,7 @@ section > span {
   text-align: center;
 }
 
-
+/* Tooltip styling */
 .tooltip {
   position: absolute;
   text-align: left;
@@ -131,37 +145,39 @@ section > span {
   stroke-width: 2;
 }
 
-/* For the radar */
+/* Radar chart styling */
 .radar-chart .area {
   fill-opacity: 0;
   fill: none;
-  }
+}
 
-  .radar-chart.focus .area {
+.radar-chart.focus .area {
   fill-opacity: 0;
   fill-opacity: 0;
   fill: none;
-  }
-  .radar-chart.focus .area.focused {
+}
+
+.radar-chart.focus .area.focused {
   fill-opacity: 0.9;
   fill-opacity: 0;
   fill: none;
-  }
+}
 
-  .legend {
+/* Legend styling */
+.legend {
   position: absolute;
   top: 10px;
   right: 10px;
-  }
+}
 
-  .legend rect {
+.legend rect {
   width: 18px;
   height: 18px;
   fill: none;
   stroke-width: 2;
-  }
+}
 
-  .legend text {
+.legend text {
   padding-left: 5px;
   font-size: 12px;
-  }
+}
