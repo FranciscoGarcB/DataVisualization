@@ -53,7 +53,8 @@ Promise.all([d3.json("../datasets/us-states.json"), d3.csv("../datasets/abundanc
                 .duration(200)
                 .style("visibility", "visible");
             const formattedValue = d3.format(",")(abundanceMap.get(d.properties.NAME) || 0);
-            tooltip.html(`${d.properties.NAME}: ${formattedValue}`)
+            tooltip.html(`State: ${d.properties.NAME} <br>
+                Abundance: ${formattedValue}`)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
         })
