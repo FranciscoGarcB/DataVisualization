@@ -1,4 +1,4 @@
-var margin = { top: 20, right: 120, bottom: 20, left: 20 };
+var margin = { top: 20, right: 120, bottom: 50, left: 20 };
 var width = 800 - margin.left - margin.right;
 var height = 500 - margin.top - margin.bottom;
 
@@ -20,15 +20,27 @@ Promise.all([d3.json("../datasets/us-states.json"), d3.csv("../datasets/abundanc
     var geojson = data[0];
     var csvData = data[1];
 
-    // Create a map to store abundance values for each state
-    var abundanceMap = new Map();
+    // Create a map to store tree density values for each state
+    var treeDensityMap = new Map();
     csvData.forEach(d => {
-        abundanceMap.set(d.state, +d.abundance);
+        // Use the 'NAME' property from GeoJSON to match with the CSV data
+        var geoJsonState = geojson.features.find(feature => feature.properties.NAME === d.state);
+
+        if (geoJsonState && geoJsonState.properties.CENSUSAREA !== undefined) {
+            treeDensityMap.set(d.state, ((d.abundance || 0) / geoJsonState.properties.CENSUSAREA)* 2.58998811);
+        } else {
+            console.warn(`'CENSUSAREA' is undefined for state: ${d.state}. Using default value.`);
+            // Use a default value (1) if 'CENSUSAREA' is undefined
+            treeDensityMap.set(d.state, d.abundance || 0);
+        }
     });
 
-    // Define a color scale (green and white)
-    var colorScale = d3.scaleSequential(d3.interpolateGreens)
-        .domain([0, d3.max(csvData, d => +d.abundance)]);
+    // Calculate the maximum tree density value
+    var maxTreeDensity = 46.672;
+
+    // Define a new color scale (blue and white for tree density)
+    var colorScavarreeDensity = d3.scaleSequential(d3.interpolateGreens)
+        .domain([0, maxTreeDensity]);
 
     // Define a projection
     var projection = d3.geoAlbersUsa().fitSize([width, height], geojson);
@@ -43,20 +55,16 @@ Promise.all([d3.json("../datasets/us-states.json"), d3.csv("../datasets/abundanc
         .attr("d", path)
         .attr("stroke", "#333")
         .attr("fill", d => {
-            var value = abundanceMap.get(d.properties.NAME) || 0;
-            return value === 0 ? "white" : colorScale(value);
+            var value = treeDensityMap.get(d.properties.NAME) || 0;
+            return value === 0 ? "white" : colorScavarreeDensity(value);
         })
         .on("mouseover", function (d) {
             // Show tooltip on mouseover
             tooltip.transition()
                 .duration(200)
                 .style("visibility", "visible");
-            var formattedValue = d3.format(",")(abundanceMap.get(d.properties.NAME) || 0);
-            var treeDensityMiles = (abundanceMap.get(d.properties.NAME) || 0) / d.properties.CENSUSAREA;
-            var treeDensityMeters = treeDensityMiles * 2.58998811; // Conversion from square miles to square meters
-            var formattedTreeDensity = d3.format(".3f")(treeDensityMeters);
+            var formattedTreeDensity = d3.format(".3f")(treeDensityMap.get(d.properties.NAME) || 0);
             tooltip.html(`State: ${d.properties.NAME} <br>
-                Abundance: ${formattedValue} trees <br>
                 Tree Density: ${formattedTreeDensity} trees/m<sup>2</sup>`)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
@@ -71,21 +79,17 @@ Promise.all([d3.json("../datasets/us-states.json"), d3.csv("../datasets/abundanc
             tooltip.transition()
                 .duration(500)
                 .style("visibility", "hidden");
-        })
-        .attr("fill", d => {
-            var value = abundanceMap.get(d.properties.NAME) || 0;
-            return value === 0 ? "white" : colorScale(value);
         });
 
     // Add a legend
     var legend = svg.append("g")
         .attr("transform", `translate(${width + 30},${margin.top})`);
 
-    var legendScale = d3.scaleLinear()
-        .domain([0, d3.max(csvData, d => +d.abundance)])
+    var legendScavarreeDensity = d3.scaleLinear()
+        .domain([0, maxTreeDensity])
         .range([0, height]);
 
-    var legendAxis = d3.axisRight(legendScale);
+    var legendAxisTreeDensity = d3.axisRight(legendScavarreeDensity);
 
     var gradientHeight = height;
 
@@ -93,19 +97,19 @@ Promise.all([d3.json("../datasets/us-states.json"), d3.csv("../datasets/abundanc
     legend.append("rect")
         .attr("width", 20)
         .attr("height", gradientHeight)
-        .style("fill", "url(#legendGradient)");
+        .style("fill", "url(#legendGradientTreeDensity)");
 
     // Add a gradient definition for the legend
     var defs = svg.append("defs");
-    var gradient = defs.append("linearGradient")
-        .attr("id", "legendGradient")
+    var gradientTreeDensity = defs.append("linearGradient")
+        .attr("id", "legendGradientTreeDensity")
         .attr("x1", "0%")
         .attr("y1", "0%")
         .attr("x2", "0%")
         .attr("y2", "100%");
 
-    gradient.selectAll("stop")
-        .data(colorScale.ticks(6).map((t, i, n) => ({ offset: `${100 * i / n.length}%`, color: colorScale(t) })))
+    gradientTreeDensity.selectAll("stop")
+        .data(colorScavarreeDensity.ticks(6).map((t, i, n) => ({ offset: `${100 * i / n.length}%`, color: colorScavarreeDensity(t) })))
         .enter().append("stop")
         .attr("offset", d => d.offset)
         .attr("stop-color", d => d.color);
@@ -114,6 +118,5 @@ Promise.all([d3.json("../datasets/us-states.json"), d3.csv("../datasets/abundanc
     svg.append("g")
         .attr("class", "legendValues")
         .attr("transform", `translate(${width + 50},${margin.top})`)
-        .call(legendAxis);
-
+        .call(legendAxisTreeDensity);
 });

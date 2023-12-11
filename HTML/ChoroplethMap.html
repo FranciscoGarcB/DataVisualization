@@ -16,17 +16,11 @@
   <meta name="theme-color" content="#ffffff">
 
   <!-- Frameworks -->
-  <script crossorigin="anonymous" src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
-  <link crossorigin="anonymous" href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet'/>
   <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-  <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/6.3.0/turf.min.js"></script>
   <script crossorigin="anonymous" src="https://d3js.org/d3.v5.min.js"></script>
   <!-- Map style -->
   <style>
     #map {top: 0; bottom: 0; width: 100%; height: 500px;}
-    .tooltip{
-      visibility: hidden;
-    }
   </style>
   <link rel="stylesheet" href="../CSS/style.css">
 </head>
@@ -56,14 +50,53 @@
     <br>
 
     <p>
-
+      Added radio buttons to decide wether to see the <b>color scale by abundance (quantity of trees)
+      or by density (trees by squared meter)</b>. It is interesting to see that even that California 
+      is the state with more trees, it is not the one with the most trees density.
     </p>
 
-    <h4> Abundance of trees per state</h4>
+    <input type="radio" name="chartType" id="TreesAbundance" checked> By Abundance
+    <input type="radio" name="chartType" id="TreesDensity"> By Density
+    <br> <br> <br>
+
     <div id="my_dataviz"></div>
-    <script src="../JavaScript/choropleth.js"></script>
 
+    <script>
+      // Change between scripts
+      const TreesAbundance = document.getElementById("TreesAbundance");
+      const TreesDensity = document.getElementById("TreesDensity");
+      const stackedDiv = document.getElementById("my_dataviz");
 
+      TreesAbundance.addEventListener("change", function () {
+        if (TreesAbundance.checked) {
+          // Delete content
+          stackedDiv.innerHTML = "";
+          // First script 
+          const script = document.createElement("script");
+          script.src = "../JavaScript/choropleth.js";
+          stackedDiv.appendChild(script);
+        }
+      });
+
+      TreesDensity.addEventListener("change", function () {
+        if (TreesDensity.checked) {
+          // Delete content
+          stackedDiv.innerHTML = "";
+          // Second script
+          const script = document.createElement("script");
+          script.src = "../JavaScript/choropleth2.js";
+          stackedDiv.appendChild(script);
+        }
+      });
+
+      // First script on first load of the page
+      window.addEventListener("load", function () {
+        const initialScript = document.createElement("script");
+        initialScript.src = "../JavaScript/choropleth.js";
+        stackedDiv.appendChild(initialScript);
+      });
+    </script>
+    
   </section>
 </body>
 
